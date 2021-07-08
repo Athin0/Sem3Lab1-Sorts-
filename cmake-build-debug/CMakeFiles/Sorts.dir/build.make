@@ -89,17 +89,62 @@ CMakeFiles/Sorts.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Sorts.dir/main.cpp.s"
 	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/arina/CLionProjects/Sorts/main.cpp -o CMakeFiles/Sorts.dir/main.cpp.s
 
+CMakeFiles/Sorts.dir/DynamicArray.cpp.o: CMakeFiles/Sorts.dir/flags.make
+CMakeFiles/Sorts.dir/DynamicArray.cpp.o: ../DynamicArray.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/arina/CLionProjects/Sorts/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Sorts.dir/DynamicArray.cpp.o"
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Sorts.dir/DynamicArray.cpp.o -c /cygdrive/c/Users/arina/CLionProjects/Sorts/DynamicArray.cpp
+
+CMakeFiles/Sorts.dir/DynamicArray.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Sorts.dir/DynamicArray.cpp.i"
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/arina/CLionProjects/Sorts/DynamicArray.cpp > CMakeFiles/Sorts.dir/DynamicArray.cpp.i
+
+CMakeFiles/Sorts.dir/DynamicArray.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Sorts.dir/DynamicArray.cpp.s"
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/arina/CLionProjects/Sorts/DynamicArray.cpp -o CMakeFiles/Sorts.dir/DynamicArray.cpp.s
+
+CMakeFiles/Sorts.dir/LinkedList.cpp.o: CMakeFiles/Sorts.dir/flags.make
+CMakeFiles/Sorts.dir/LinkedList.cpp.o: ../LinkedList.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/arina/CLionProjects/Sorts/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Sorts.dir/LinkedList.cpp.o"
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Sorts.dir/LinkedList.cpp.o -c /cygdrive/c/Users/arina/CLionProjects/Sorts/LinkedList.cpp
+
+CMakeFiles/Sorts.dir/LinkedList.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Sorts.dir/LinkedList.cpp.i"
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/arina/CLionProjects/Sorts/LinkedList.cpp > CMakeFiles/Sorts.dir/LinkedList.cpp.i
+
+CMakeFiles/Sorts.dir/LinkedList.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Sorts.dir/LinkedList.cpp.s"
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/arina/CLionProjects/Sorts/LinkedList.cpp -o CMakeFiles/Sorts.dir/LinkedList.cpp.s
+
+CMakeFiles/Sorts.dir/Sorts.cpp.o: CMakeFiles/Sorts.dir/flags.make
+CMakeFiles/Sorts.dir/Sorts.cpp.o: ../Sorts.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/arina/CLionProjects/Sorts/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Sorts.dir/Sorts.cpp.o"
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Sorts.dir/Sorts.cpp.o -c /cygdrive/c/Users/arina/CLionProjects/Sorts/Sorts.cpp
+
+CMakeFiles/Sorts.dir/Sorts.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Sorts.dir/Sorts.cpp.i"
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/arina/CLionProjects/Sorts/Sorts.cpp > CMakeFiles/Sorts.dir/Sorts.cpp.i
+
+CMakeFiles/Sorts.dir/Sorts.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Sorts.dir/Sorts.cpp.s"
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/arina/CLionProjects/Sorts/Sorts.cpp -o CMakeFiles/Sorts.dir/Sorts.cpp.s
+
 # Object files for target Sorts
 Sorts_OBJECTS = \
-"CMakeFiles/Sorts.dir/main.cpp.o"
+"CMakeFiles/Sorts.dir/main.cpp.o" \
+"CMakeFiles/Sorts.dir/DynamicArray.cpp.o" \
+"CMakeFiles/Sorts.dir/LinkedList.cpp.o" \
+"CMakeFiles/Sorts.dir/Sorts.cpp.o"
 
 # External object files for target Sorts
 Sorts_EXTERNAL_OBJECTS =
 
 Sorts.exe: CMakeFiles/Sorts.dir/main.cpp.o
+Sorts.exe: CMakeFiles/Sorts.dir/DynamicArray.cpp.o
+Sorts.exe: CMakeFiles/Sorts.dir/LinkedList.cpp.o
+Sorts.exe: CMakeFiles/Sorts.dir/Sorts.cpp.o
 Sorts.exe: CMakeFiles/Sorts.dir/build.make
 Sorts.exe: CMakeFiles/Sorts.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/cygdrive/c/Users/arina/CLionProjects/Sorts/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Sorts.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/cygdrive/c/Users/arina/CLionProjects/Sorts/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable Sorts.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Sorts.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

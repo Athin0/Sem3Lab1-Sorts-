@@ -4,6 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/cygdrive/c/Users/arina/CLionProjects/Sorts/DynamicArray.cpp" "/cygdrive/c/Users/arina/CLionProjects/Sorts/cmake-build-debug/CMakeFiles/Sorts.dir/DynamicArray.cpp.o"
+  "/cygdrive/c/Users/arina/CLionProjects/Sorts/LinkedList.cpp" "/cygdrive/c/Users/arina/CLionProjects/Sorts/cmake-build-debug/CMakeFiles/Sorts.dir/LinkedList.cpp.o"
+  "/cygdrive/c/Users/arina/CLionProjects/Sorts/Sorts.cpp" "/cygdrive/c/Users/arina/CLionProjects/Sorts/cmake-build-debug/CMakeFiles/Sorts.dir/Sorts.cpp.o"
   "/cygdrive/c/Users/arina/CLionProjects/Sorts/main.cpp" "/cygdrive/c/Users/arina/CLionProjects/Sorts/cmake-build-debug/CMakeFiles/Sorts.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

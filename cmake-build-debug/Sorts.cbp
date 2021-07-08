@@ -80,6 +80,33 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/cygdrive/c/Users/arina/CLionProjects/Sorts/DynamicArray.cpp">
+			<Option target="Sorts"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/arina/CLionProjects/Sorts/DynamicArray.h">
+			<Option target="Sorts"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/arina/CLionProjects/Sorts/DynamicArraySequence.h">
+			<Option target="Sorts"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/arina/CLionProjects/Sorts/LinkedList.cpp">
+			<Option target="Sorts"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/arina/CLionProjects/Sorts/LinkedList.h">
+			<Option target="Sorts"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/arina/CLionProjects/Sorts/LinkedListSequence.h">
+			<Option target="Sorts"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/arina/CLionProjects/Sorts/Sequence.h">
+			<Option target="Sorts"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/arina/CLionProjects/Sorts/Sorts.cpp">
+			<Option target="Sorts"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/arina/CLionProjects/Sorts/Sorts.h">
+			<Option target="Sorts"/>
+		</Unit>
 		<Unit filename="/cygdrive/c/Users/arina/CLionProjects/Sorts/main.cpp">
 			<Option target="Sorts"/>
 		</Unit>

@@ -142,6 +142,87 @@ Sorts/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Sorts.dir/build.make CMakeFiles/Sorts.dir/build
 .PHONY : Sorts/fast
 
+DynamicArray.o: DynamicArray.cpp.o
+
+.PHONY : DynamicArray.o
+
+# target to build an object file
+DynamicArray.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Sorts.dir/build.make CMakeFiles/Sorts.dir/DynamicArray.cpp.o
+.PHONY : DynamicArray.cpp.o
+
+DynamicArray.i: DynamicArray.cpp.i
+
+.PHONY : DynamicArray.i
+
+# target to preprocess a source file
+DynamicArray.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Sorts.dir/build.make CMakeFiles/Sorts.dir/DynamicArray.cpp.i
+.PHONY : DynamicArray.cpp.i
+
+DynamicArray.s: DynamicArray.cpp.s
+
+.PHONY : DynamicArray.s
+
+# target to generate assembly for a file
+DynamicArray.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Sorts.dir/build.make CMakeFiles/Sorts.dir/DynamicArray.cpp.s
+.PHONY : DynamicArray.cpp.s
+
+LinkedList.o: LinkedList.cpp.o
+
+.PHONY : LinkedList.o
+
+# target to build an object file
+LinkedList.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Sorts.dir/build.make CMakeFiles/Sorts.dir/LinkedList.cpp.o
+.PHONY : LinkedList.cpp.o
+
+LinkedList.i: LinkedList.cpp.i
+
+.PHONY : LinkedList.i
+
+# target to preprocess a source file
+LinkedList.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Sorts.dir/build.make CMakeFiles/Sorts.dir/LinkedList.cpp.i
+.PHONY : LinkedList.cpp.i
+
+LinkedList.s: LinkedList.cpp.s
+
+.PHONY : LinkedList.s
+
+# target to generate assembly for a file
+LinkedList.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Sorts.dir/build.make CMakeFiles/Sorts.dir/LinkedList.cpp.s
+.PHONY : LinkedList.cpp.s
+
+Sorts.o: Sorts.cpp.o
+
+.PHONY : Sorts.o
+
+# target to build an object file
+Sorts.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Sorts.dir/build.make CMakeFiles/Sorts.dir/Sorts.cpp.o
+.PHONY : Sorts.cpp.o
+
+Sorts.i: Sorts.cpp.i
+
+.PHONY : Sorts.i
+
+# target to preprocess a source file
+Sorts.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Sorts.dir/build.make CMakeFiles/Sorts.dir/Sorts.cpp.i
+.PHONY : Sorts.cpp.i
+
+Sorts.s: Sorts.cpp.s
+
+.PHONY : Sorts.s
+
+# target to generate assembly for a file
+Sorts.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Sorts.dir/build.make CMakeFiles/Sorts.dir/Sorts.cpp.s
+.PHONY : Sorts.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -178,6 +259,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Sorts"
+	@echo "... DynamicArray.o"
+	@echo "... DynamicArray.i"
+	@echo "... DynamicArray.s"
+	@echo "... LinkedList.o"
+	@echo "... LinkedList.i"
+	@echo "... LinkedList.s"
+	@echo "... Sorts.o"
+	@echo "... Sorts.i"
+	@echo "... Sorts.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

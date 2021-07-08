@@ -1,4 +1,7 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Sorts.dir/DynamicArray.cpp.o"
+  "CMakeFiles/Sorts.dir/LinkedList.cpp.o"
+  "CMakeFiles/Sorts.dir/Sorts.cpp.o"
   "CMakeFiles/Sorts.dir/main.cpp.o"
   "Sorts.exe"
   "Sorts.pdb"

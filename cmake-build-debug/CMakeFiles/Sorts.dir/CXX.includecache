@@ -6,7 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/cygdrive/c/Users/arina/CLionProjects/Sorts/main.cpp
+/cygdrive/c/Users/arina/CLionProjects/Sorts/Sorts.cpp
+Sorts.h
+/cygdrive/c/Users/arina/CLionProjects/Sorts/Sorts.h
+
+/cygdrive/c/Users/arina/CLionProjects/Sorts/Sorts.h
 iostream
 -
 vector
