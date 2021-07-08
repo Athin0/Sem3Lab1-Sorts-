@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cygdrive/c/Users/arina/CLionProjects/Sorts/main.cpp
+iostream
+-
+vector
+/cygdrive/c/Users/arina/CLionProjects/Sorts/vector
+random
+/cygdrive/c/Users/arina/CLionProjects/Sorts/random
+
