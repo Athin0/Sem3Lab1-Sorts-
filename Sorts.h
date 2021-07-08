@@ -5,7 +5,7 @@
 #ifndef SORTS_SORTS_H
 #define SORTS_SORTS_H
 #include <iostream>
-#include "vector"
+#include "Sequence.h"
 #include "random"
 using namespace std;
 template <class T>

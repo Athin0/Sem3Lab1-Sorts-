@@ -5,7 +5,7 @@
 #include "Sorts.h"
 
 template <class T>
-void sortBubble(vector<T>& vec) {
+void sortBubble(Sequence<T>& vec) {
     for (int i = 0; i < vec.size(); i++)
         for (int j = 0; j < vec.size() - 1; j++) {
             if (vec[j] > vec[j + 1]) {
@@ -16,7 +16,7 @@ void sortBubble(vector<T>& vec) {
         }
 }
 template <class T>
-void sortInsertion(vector<T>& vec){
+void sortInsertion(Sequence<T>& vec){
     for(int i=1;i<vec.size();i++){
         for (int j=i;j>0 && vec[j-1]>vec[j];j--){
             T temp = vec[j];
@@ -28,7 +28,7 @@ void sortInsertion(vector<T>& vec){
 
 
 template <class T>
-void sortSelection(vector<T>& vec){
+void sortSelection(Sequence<T>& vec){
     for( int i=0;i<vec.size()-1;i++){
         int min_ind= i;
         for (int j=i+1;j<vec.size();j++){
@@ -95,7 +95,7 @@ void merge_sort(T array[], size_t size) noexcept
         merge_sort(&array[left_size], right_size);
 
         size_t lidx = 0, ridx = left_size, idx = 0;
-        vector <T[]> tmp_array(new T[size]);
+        Sequence <T[]> tmp_array(new T[size]);
 
         while (lidx < left_size || ridx < size)
         {
