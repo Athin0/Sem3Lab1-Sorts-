@@ -32,7 +32,7 @@ template <class T>
 void sortSelection(vector<T>& vec);
 
 template <class T>
-void sortMerge(vector<T>& vec);
+void sortMerge(T, int);
 
 template <class T>
 void swap(T &a1,T &a2) {
@@ -92,8 +92,43 @@ void sortSelection(vector<T>& vec){
 }
 
 template <class T>
-void sortMerge(vector<T>& vec,int size){
-    sortMerge(vec);
+void sortMerge(T array,int size){
+    if (size>1){
+        int left_size = size/2;
+        int right_size = size- left_size;
+        sortMerge(array,left_size);
+        sortMerge(array+left_size,right_size);
+        int left_ind =0, right_ind = left_size, ind =0;
+        T temp_array(new T[size]);
+        while(ind<right_size || right_ind< size){
+            if (array[left_ind]<array[right_ind]){
+                temp_array[ind++] = array[left_ind];
+                left_ind++;
+            }
+            else {
+                temp_array[ind++] = array[right_ind];
+                right_ind++;
+            }
+            if (left_ind=left_size){
+                while (ind !=size){
+                    temp_array[ind++] = array[right_ind];
+                    right_ind++;
+                }
+                break;
+            }
+            if (right_ind=size){
+                while (ind !=size){
+                    temp_array[ind++] = array[left_ind];
+                    left_ind++;
+                }
+                break;
+            }
+        }
+    }
+    while (ind !=size){
+        temp_array[ind++] = array[left_ind];
+        left_ind++;
+    }
 
 }
 
@@ -144,4 +179,12 @@ void merge_sort(T array[], size_t size) noexcept
                   make_move_iterator(&tmp_array[size]),
                   array);
     }
+}
+
+template < typename T>
+void copy(T*begin, T* end,T* place){
+    for(T* i =begin; i < end;i++){
+        place.add(*i);
+    }
+
 }
