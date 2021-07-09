@@ -94,6 +94,36 @@ void sortMerge(Sequence<T> *array,int size, int begin){
 delete temp_array;
 }
 
+template <class T>
+void sortMerge0(Sequence<T> *array,int first, int last) {
+    if (first<last) {
+        sortMerge0(array, first, (first + last) / 2);
+        sortMerge0(array, (first + last) / 2 + 1, last);
+        Merge(array, first, last);
+    }
+}
+
+template <class T>
+void Merge(Sequence<T> *array,int begin, int last){
+    ArraySequence<T> *temp_array = new ArraySequence<T>;
+    int mid, first,second;
+    mid=(begin+last)/2;
+    first= begin;
+    second=mid+1;
+    for (int i=begin;i<=last;i++){
+        if(first<=mid && (second>last|| array->Get(first)<array->Get(second))){
+            temp_array->Append(array->Get(first));
+            first++;
+        } else{
+            temp_array->Append(array->Get(second));
+            second++;
+        }
+    }
+    cout<<temp_array;
+    for (int j=begin; j<=last; j++) array->Set(j,temp_array->Get(j));
+    delete temp_array;
+}
+
 template<typename T>
 void merge_sort(T array[], size_t size) noexcept
 {

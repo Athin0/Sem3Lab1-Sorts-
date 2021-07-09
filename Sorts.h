@@ -21,6 +21,10 @@ template <class T>
 void sortMerge(Sequence<T>*, int,int begin=0);
 
 template <class T>
+void Merge(Sequence<T>*, int,int begin=0);
+template <class T>
+void sortMerge0(Sequence<T>*, int,int);
+template <class T>
 void swap(T &a1,T &a2) {
     T temp = a1;
     a1 =a2;
