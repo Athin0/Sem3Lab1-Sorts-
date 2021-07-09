@@ -55,7 +55,7 @@ public:
         return dynamicArray.Get(index);
     }
 
-    void Set(T item,int index) {
+    void Set(int index,T item) {
         if (index < 0 || index >= GetLength())
             throw IndexOutOfRange(GetLength(), index);
         dynamicArray.Set(index, item);

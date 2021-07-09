@@ -3,84 +3,95 @@
 //
 
 #include "Sorts.h"
+#include "DynamicArraySequence.h"
+template <class T>
+void swap(Sequence<T>& seq, int i1, int i2) {
+    T item = seq.Get(i1);
+    seq.Set(seq.Get(i2), i1);
+    seq.Set(item, i2);
+}
 
 template <class T>
 void sortBubble(Sequence<T>& vec) {
-    for (int i = 0; i < vec.size(); i++)
-        for (int j = 0; j < vec.size() - 1; j++) {
-            if (vec[j] > vec[j + 1]) {
-                T temp = vec[j];
-                vec[j] = vec[j + 1];
-                vec[j + 1] = temp;
+    for (int i = 0; i < vec.GetLength(); i++)
+        for (int j = 0; j < vec.GetLength() - 1; j++) {
+            if (vec.Get(j) > vec.Get(j + 1) ){
+                swap(vec,j,j+1);
             }
         }
 }
 template <class T>
 void sortInsertion(Sequence<T>& vec){
-    for(int i=1;i<vec.size();i++){
-        for (int j=i;j>0 && vec[j-1]>vec[j];j--){
-            T temp = vec[j];
-            vec[j] = vec[j-1];
-            vec[j-1] = temp;
+    for(int i=1;i<vec.GetLength();i++){
+        for (int j=i;j>0 && vec.Get(j-1)>vec.Get(j);j--){
+            swap(vec,j,j-1);
         }
     }
 }
 
-
 template <class T>
 void sortSelection(Sequence<T>& vec){
-    for( int i=0;i<vec.size()-1;i++){
+    for( int i=0;i<vec.GetLength()-1;i++){
         int min_ind= i;
-        for (int j=i+1;j<vec.size();j++){
-            if (vec[min_ind]>vec[j])
+        for (int j=i+1;j<vec.GetLength();j++){
+            if (vec[min_ind]>vec.Get(j))
                 min_ind= j;
         }
-        T temp = vec[min_ind];
-        vec[min_ind] = vec[i];
-        vec[i] = temp;
-        //swap(vec[min_ind],vec[i]);
+        swap(vec,min_ind,i);
     }
 }
 
 template <class T>
-void sortMerge(T array,int size){
+void sortMerge(Sequence<T> *array,int size, int begin){
+    ArraySequence<T> *temp_array = new ArraySequence<T>;
     if (size>1){
         int left_size = size/2;
         int right_size = size- left_size;
         sortMerge(array,left_size);
-        sortMerge(array+left_size,right_size);
+        sortMerge(array,right_size,begin+left_size);
         int left_ind =0, right_ind = left_size, ind =0;
-        T temp_array(new T[size]);
         while(ind<right_size || right_ind< size){
-            if (array[left_ind]<array[right_ind]){
-                temp_array[ind++] = array[left_ind];
+            if (array->Get(left_ind)<array->Get(right_ind)){
+                temp_array->Append(array->Get(left_ind));
+                ind++;
                 left_ind++;
             }
             else {
-                temp_array[ind++] = array[right_ind];
+                temp_array->Append(array->Get(right_ind));
+                ind++;
                 right_ind++;
             }
-            if (left_ind=left_size){
+            if (left_ind==left_size){
                 while (ind !=size){
-                    temp_array[ind++] = array[right_ind];
+                    temp_array->Append( array->Get(right_ind));
+                    ind++;
                     right_ind++;
                 }
-                break;
             }
-            if (right_ind=size){
+            if (right_ind==size){
                 while (ind !=size){
-                    temp_array[ind++] = array[left_ind];
+                    temp_array->Append( array->Get(left_ind));
+                    ind++;
                     left_ind++;
                 }
-                break;
             }
         }
     }
-  // while (ind !=size){
-  //     temp_array[ind++] = array[left_ind];
-  //     left_ind++;
-  // }
+    else {
+        int ind = 0;
+        while (ind != size) {
+            temp_array->Append(array->Get(ind+begin));
+            ind++;
+        }
+    }
+    int ind = 0;
+    while (ind != size) {
+        array->Set(ind+begin,temp_array->Get(ind));
+        ind++;
+    }
 
+    cout<< *temp_array <<"temp_arr \n" ;
+delete temp_array;
 }
 
 template<typename T>
@@ -132,10 +143,10 @@ void merge_sort(T array[], size_t size) noexcept
     }
 }
 
-template < typename T>
-void copy(T*begin, T* end,T* place){
-    for(T* i =begin; i < end;i++){
-        place.add(*i);
-    }
-
-}
+//template < typename T>
+//void copy(T*begin, T* end,T* place){
+//    for(T* i =begin; i < end;i++){
+//        place.add(*i);
+//    }
+//
+//}

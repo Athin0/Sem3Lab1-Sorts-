@@ -18,7 +18,7 @@ public:
     virtual T GetFirst() = 0;
     virtual T GetLast() = 0;
     virtual T Get(int index) const = 0;
-    virtual void Set(T item, int index) = 0;
+    virtual void Set(int index,T item) = 0;
     virtual T &operator [] (int index) = 0;
 
     virtual Sequence<T>* GetSubSequence( int startIndex, int endIndex) = 0;

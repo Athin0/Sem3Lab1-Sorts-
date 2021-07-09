@@ -7,6 +7,10 @@ CMakeFiles/Sorts.dir/DynamicArray.cpp.o: ../DynamicArray.h
 CMakeFiles/Sorts.dir/LinkedList.cpp.o: ../LinkedList.cpp
 CMakeFiles/Sorts.dir/LinkedList.cpp.o: ../LinkedList.h
 
+CMakeFiles/Sorts.dir/Sorts.cpp.o: ../DynamicArray.cpp
+CMakeFiles/Sorts.dir/Sorts.cpp.o: ../DynamicArray.h
+CMakeFiles/Sorts.dir/Sorts.cpp.o: ../DynamicArraySequence.h
+CMakeFiles/Sorts.dir/Sorts.cpp.o: ../Sequence.h
 CMakeFiles/Sorts.dir/Sorts.cpp.o: ../Sorts.cpp
 CMakeFiles/Sorts.dir/Sorts.cpp.o: ../Sorts.h
 
@@ -16,5 +20,7 @@ CMakeFiles/Sorts.dir/main.cpp.o: ../DynamicArraySequence.h
 CMakeFiles/Sorts.dir/main.cpp.o: ../LinkedList.h
 CMakeFiles/Sorts.dir/main.cpp.o: ../LinkedListSequence.h
 CMakeFiles/Sorts.dir/main.cpp.o: ../Sequence.h
+CMakeFiles/Sorts.dir/main.cpp.o: ../Sorts.cpp
+CMakeFiles/Sorts.dir/main.cpp.o: ../Sorts.h
 CMakeFiles/Sorts.dir/main.cpp.o: ../main.cpp
 

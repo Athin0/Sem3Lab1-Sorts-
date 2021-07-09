@@ -9,16 +9,16 @@
 #include "random"
 using namespace std;
 template <class T>
-void sortBubble(vector<T>& vec);
+void sortBubble(Sequence<T>& vec);
 
 template <class T>
-void sortInsertion(vector<T>& vec);
+void sortInsertion(Sequence<T>& vec);
 
 template <class T>
-void sortSelection(vector<T>& vec);
+void sortSelection(Sequence<T>& vec);
 
 template <class T>
-void sortMerge(T, int);
+void sortMerge(Sequence<T>*, int,int begin=0);
 
 template <class T>
 void swap(T &a1,T &a2) {

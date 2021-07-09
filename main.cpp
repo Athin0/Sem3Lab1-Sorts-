@@ -1,5 +1,6 @@
 #include <iostream>
-#include "vector"
+#include "Sorts.h"
+#include "Sorts.cpp"
 #include "random"
 #include "DynamicArraySequence.h"
 #include "LinkedListSequence.h"
@@ -11,6 +12,8 @@ int main() {
     for (int i = 0; i < n; i++) {
        a.Append(rand()%100);
     }
+    cout << a<<endl;
+    sortMerge(&a,n);
     cout<< a;
 
     return 0;
