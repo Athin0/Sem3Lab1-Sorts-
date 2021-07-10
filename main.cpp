@@ -13,7 +13,7 @@ int main() {
        a.Append(rand()%100);
     }
     cout << a<<endl;
-    sortMerge0(&a,0,n-1);
+    sortMerge0(&a,0,n);
     cout<< a;
 
     return 0;
