@@ -119,8 +119,7 @@ void Merge(Sequence<T> *array,int begin, int last){
             second++;
         }
     }
-    cout<<temp_array;
-    for (int j=begin; j<=last; j++) array->Set(j,temp_array->Get(j));
+    for (int j=begin; j<=last; j++) array->Set(j,temp_array->Get(j-begin));
     delete temp_array;
 }
 
