@@ -7,8 +7,8 @@
 template <class T>
 void swap(Sequence<T>& seq, int i1, int i2) {
     T item = seq.Get(i1);
-    seq.Set(seq.Get(i2), i1);
-    seq.Set(item, i2);
+    seq.Set( i1,seq.Get(i2));
+    seq.Set(i2,item);
 }
 
 template <class T>
@@ -43,39 +43,54 @@ void sortSelection(Sequence<T>& vec){
 
 
 template <class T>
-void sortMerge0(Sequence<T> *array,int first, int last) {
+void sortMerge(Sequence<T> &array,int first, int last) {
     if (first<last-1) {
-        sortMerge0(array, first, (first + last) / 2);
-        sortMerge0(array, (first + last) / 2 , last);
+        sortMerge(array, first, (first + last) / 2);
+        sortMerge(array, (first + last) / 2 , last);
         Merge(array, first, last);
     }
 }
 
 template <class T>
-void Merge(Sequence<T> *array,int begin, int last){
-    ArraySequence<T> *temp_array = new ArraySequence<T>;
+void Merge(Sequence<T> &array,int begin, int last){
+    ArraySequence<T> temp_array;
     int mid, first,second;
     mid=(begin+last)/2;
     first= begin;
     second=mid;
     for (int i=begin;i<last;i++){
-        if(first<mid && (second>=last|| array->Get(first)<array->Get(second))){
-            temp_array->Append(array->Get(first));
+        if(first<mid && (second>=last|| array.Get(first)<array.Get(second))){
+            temp_array.Append(array.Get(first));
             first++;
         } else{
-            temp_array->Append(array->Get(second));
+            temp_array.Append(array.Get(second));
             second++;
         }
     }
-    for (int j=begin; j<last; j++) array->Set(j,temp_array->Get(j-begin));
-    delete temp_array;
+    for (int j=begin; j<last; j++) array.Set(j,temp_array.Get(j-begin));
 }
 
 
-//template < typename T>
-//void copy(T*begin, T* end,T* place){
-//    for(T* i =begin; i < end;i++){
-//        place.add(*i);
-//    }
-//
-//}
+template <class T>
+int partition(Sequence<T>& A, int low,int high){
+    int rand=(low+high)/2;
+    T pivot = A[rand];    //рандомное число , можно оптимизировать
+    int temp = low;
+    for(int i =low;i<high;i++){
+        if (A[i]<=pivot){
+            swap(A,i,temp);
+            temp++;
+        }
+    }
+    swap(A,temp,rand);
+    return temp;
+
+};
+template <class T>
+void sortQuick(Sequence<T>& vec, int low,int high){
+    if(low<high) {
+        int p = partition(vec, low, high);
+        sortQuick(vec, low, p);
+        sortQuick(vec, p, high);
+    }
+}
