@@ -101,3 +101,30 @@ void sortQuick(Sequence<T>& vec, int low,int high){
         sortQuick(vec, p+1, high);
     }
 }
+
+
+template <class T>
+int partitionHaore(Sequence<T>& A, int low,int high){
+    T pivot = (A[low]+A[high])/2;
+    int begin = low;
+    int end=high;
+    while (true){
+        while (A[begin]<pivot){
+            begin++;
+        }
+        while (A[end]>pivot){
+            end--;
+        }
+        if(begin>=end)
+         return end;
+        swap(A,begin++,end--);
+    }
+}
+template<class T>
+void sortQuickHoare(Sequence<T>& vec, int low,int high){
+    if(high>low) {
+        int p = partitionHaore(vec, low, high);
+        sortQuick(vec, low, p);
+        sortQuick(vec, p+1, high);
+    }
+}

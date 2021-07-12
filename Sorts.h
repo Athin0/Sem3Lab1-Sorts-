@@ -24,9 +24,16 @@ void sortMerge(Sequence<T>&, int,int);
 
 
 template <class T>
-void sortQuick(Sequence<T>&, int,int);
+int partitionHaore(Sequence<T>& A, int low,int high);
 template <class T>
+void sortQuick(Sequence<T>&, int,int);
 
+
+template <class T>
+int partitionHaore(Sequence<T>& A, int low,int high);
+template<class T>
+void sortQuickHoare(Sequence<T>&, int,int);
+template <class T>
 void swap(T &a1,T &a2) {
     T temp = a1;
     a1 =a2;
