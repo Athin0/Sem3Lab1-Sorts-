@@ -74,23 +74,30 @@ void Merge(Sequence<T> &array,int begin, int last){
 template <class T>
 int partition(Sequence<T>& A, int low,int high){
     int rand=(low+high)/2;
-    T pivot = A[rand];    //рандомное число , можно оптимизировать
+    T pivot = A[high];    //никакой не рандом!!!!
     int temp = low;
     for(int i =low;i<high;i++){
-        if (A[i]<=pivot){
+        if (A[i]<pivot){
             swap(A,i,temp);
             temp++;
         }
     }
-    swap(A,temp,rand);
+        swap(A,temp,high);
+    /*
+    cout<<pivot<<":::: ";
+    for(int i =low;i<high;i++){
+        cout<<A[i]<<" ";
+    }
+    cout<<"/ "<<temp<< "\n";
+     */
     return temp;
 
 };
 template <class T>
 void sortQuick(Sequence<T>& vec, int low,int high){
-    if(low<high) {
+    if(high>low) {
         int p = partition(vec, low, high);
-        sortQuick(vec, low, p);
-        sortQuick(vec, p, high);
+        sortQuick(vec, low, p-1);
+        sortQuick(vec, p+1, high);
     }
 }
