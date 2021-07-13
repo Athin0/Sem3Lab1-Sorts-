@@ -6,19 +6,36 @@
 #include "LinkedListSequence.h"
 using namespace std;
 
+template< typename T>
+void Correct( ArraySequence<T> &a);
+
 int main() {
     int n=16;
     ArraySequence<int> a;
     for (int i = 0; i < n; i++) {
        a.Append(rand()%100);
     }
-    ArraySequence<int> b(a);
-    //cout << a<<endl;
-    sortBubble(b);
-    sortCocktail(a);
+    cout << a <<endl;
+    sortCounting(a);
     cout<< a;
-    for (int i = 0; i < n; i++) {
-        if(a[i]!=b[i]) cout<< "блять";
-    }
+    Correct(a);
     return 0;
+}
+
+
+
+template< typename T>
+void Correct( ArraySequence<T> &a){
+    ArraySequence<T> b(a);
+    sortCocktail(b);
+    cout<< "\nПравильность:";
+    int wrong=0;
+    int n= a.GetLength();
+    for (int i = 0; i < n; i++) {
+        if(a[i]!=b[i]){
+            cout<< "блять ";
+            wrong++;
+        }
+    }
+    if (!wrong) cout<< "Норм!";
 }

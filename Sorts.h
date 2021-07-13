@@ -18,9 +18,9 @@ template <class T>
 void sortSelection(Sequence<T>& vec);
 
 template <class T>
-void Merge(Sequence<T>&, int,int begin=0);
+void Merge(Sequence<T>& vec, int begin,int last);
 template <class T>
-void sortMerge(Sequence<T>&, int,int);
+void sortMerge(Sequence<T>&, int begin,int);
 
 
 template <class T>

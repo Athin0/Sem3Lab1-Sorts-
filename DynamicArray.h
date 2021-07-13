@@ -31,7 +31,7 @@ public:
 
     DynamicArray(T *items, int count);
 
-    DynamicArray(DynamicArray<T> const &DynamicArray);
+    DynamicArray(const DynamicArray<T> &DynamicArray);
 
     ~DynamicArray();
 
@@ -94,7 +94,7 @@ DynamicArray<T>::DynamicArray(T *items, int count) {
 }
 
 template<class T>
-DynamicArray<T>::DynamicArray(DynamicArray<T> const &dynamicArray) {
+DynamicArray<T>::DynamicArray(const DynamicArray<T>  &dynamicArray) {
     arr = nullptr; //создание нового массива и копирование элементов из такого же класса
     size = 0;
     if (dynamicArray.size == 0 || dynamicArray.arr == nullptr) return;

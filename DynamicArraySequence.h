@@ -33,8 +33,11 @@ public:
         dynamicArray = DynamicArray<T>(items, count);
     }
 
-    explicit ArraySequence(const DynamicArray<T> &array) {   //копирующий конструктор
+    ArraySequence(const DynamicArray<T> &array) {
         dynamicArray = array;
+    }
+    ArraySequence(const ArraySequence<T> &array) {   //копирующий конструктор
+        dynamicArray= array.dynamicArray;
     }
 
     T GetFirst() {

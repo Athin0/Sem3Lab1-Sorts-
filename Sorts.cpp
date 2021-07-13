@@ -153,3 +153,29 @@ void sortQuickHoare(Sequence<T> &vec, int low, int high) {
         sortQuick(vec, p, high);
     }
 }
+template<class T>
+void sortCounting(Sequence<T>& vec){
+    T size= vec.GetLength();
+    if (size<=1) return;
+    ArraySequence<T> temp;
+    T max = vec[0];
+    T min = vec[0];
+    for(int i= 1;i< size;i++){
+        if (max<vec[i]) max=vec[i];
+        if (min>vec[i]) min=vec[i];
+    }
+    for(int i= min;i<= max;i++){
+        temp.Append(0);
+    }
+    for(int i= 0;i< size;i++){
+        temp[vec[i]]++;
+    }
+    int m=0;
+    for(int i= min;i<= max;i++){
+        for(int j=0;j<temp[i];j++){
+         vec[m]=i;
+         m++;
+        }
+
+    }
+}
