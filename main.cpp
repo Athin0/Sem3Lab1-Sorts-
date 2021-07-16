@@ -10,13 +10,16 @@ template< typename T>
 void Correct( ArraySequence<T> &a);
 
 int main() {
-    int n=16;
+    int n=15;
     ArraySequence<int> a;
     for (int i = 0; i < n; i++) {
        a.Append(rand()%100);
     }
     cout << a <<endl;
-    sortCounting(a);
+    ArraySequence<int> k;
+    k.Append(1);
+    sortShell2(a,k);
+
     cout<< a;
     Correct(a);
     return 0;

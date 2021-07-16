@@ -64,7 +64,6 @@ void sortSelection(Sequence<T> &vec) {
     }
 }
 
-
 template<class T>
 void sortMerge(Sequence<T> &array, int first, int last) {
     if (first < last - 1) {
@@ -115,7 +114,7 @@ int partition(Sequence<T> &A, int low, int high) {
      */
     return temp;
 
-};
+}
 
 template<class T>
 void sortQuick(Sequence<T> &vec, int low, int high) {
@@ -153,29 +152,66 @@ void sortQuickHoare(Sequence<T> &vec, int low, int high) {
         sortQuick(vec, p, high);
     }
 }
+
 template<class T>
-void sortCounting(Sequence<T>& vec){
-    T size= vec.GetLength();
-    if (size<=1) return;
+void sortCounting(Sequence<T> &vec) {
+    T size = vec.GetLength();
+    if (size <= 1) return;
     ArraySequence<T> temp;
     T max = vec[0];
     T min = vec[0];
-    for(int i= 1;i< size;i++){
-        if (max<vec[i]) max=vec[i];
-        if (min>vec[i]) min=vec[i];
+    for (int i = 1; i < size; i++) {
+        if (max < vec[i]) max = vec[i];
+        if (min > vec[i]) min = vec[i];
     }
-    for(int i= min;i<= max;i++){
+    for (int i = min; i <= max; i++) {
         temp.Append(0);
     }
-    for(int i= 0;i< size;i++){
+    for (int i = 0; i < size; i++) {
         temp[vec[i]]++;
     }
-    int m=0;
-    for(int i= min;i<= max;i++){
-        for(int j=0;j<temp[i];j++){
-         vec[m]=i;
-         m++;
+    int m = 0;
+    for (int i = min; i <= max; i++) {
+        for (int j = 0; j < temp[i]; j++) {
+            vec[m] = i;
+            m++;
         }
+    }
+}
 
+template<class T>
+void sortShell(Sequence<T> &vec){
+    size_t size= vec.GetLength();
+    //ArraySequence<T> d;
+    int d= 1;
+    int n=0;
+    while(d<size){
+        n++;
+        d=pow(2,n)-1;
+    }
+    while(d>0){
+        for( int i=0;i<size;i++) {
+            for (int j = i + d; j < size; j += d) {
+                if (vec[i] > vec[j])
+                    swap(vec, i, j);
+            }
+        }
+        n--;
+        d=pow(2,n)-1;
+    }
+}
+
+template<class T>
+void sortShell2(Sequence<T> &vec, Sequence<T> &d){
+    size_t size= vec.GetLength();
+    int n=d.GetLength()-1;
+    while(n>=0){
+        for( int i=0;i<size;i++) {
+            for (int j = i + d[n]; j < size; j += d[n]) {
+                if (vec[i] > vec[j])
+                    swap(vec, i, j);
+            }
+        }
+        n--;
     }
 }

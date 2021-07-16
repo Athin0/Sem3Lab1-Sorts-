@@ -36,8 +36,15 @@ public:
     ArraySequence(const DynamicArray<T> &array) {
         dynamicArray = array;
     }
+
     ArraySequence(const ArraySequence<T> &array) {   //копирующий конструктор
-        dynamicArray= array.dynamicArray;
+        dynamicArray = array.dynamicArray;
+    }
+
+    explicit ArraySequence(const Sequence<T> &array) {
+        for (size_t i = 0; i < array.GetLength(); i++) {
+            Append(array[i]);
+        }
     }
 
     T GetFirst() {
@@ -58,7 +65,7 @@ public:
         return dynamicArray.Get(index);
     }
 
-    void Set(int index,T item) {
+    void Set(int index, T item) {
         if (index < 0 || index >= GetLength())
             throw IndexOutOfRange(GetLength(), index);
         dynamicArray.Set(index, item);
@@ -92,7 +99,7 @@ public:
     }
 
     int GetLength() const {
-        const ArraySequence<int> *a= this;
+        const ArraySequence<int> *a = this;
         return dynamicArray.GetLength();
     }
 
@@ -131,9 +138,11 @@ public:
 
         return this;
     }
+
     void Reverse() {
         dynamicArray.Reverse();
     }
+
     T Pop() {
         if (dynamicArray.GetLength() == 0)
             throw IndexOutOfRange(0, -1);
@@ -154,8 +163,9 @@ public:
         return item;
     }
 };
+
 template<class T>
-std::ostream &operator<<(std::ostream &cout, ArraySequence<T>arraySequence) {
+std::ostream &operator<<(std::ostream &cout, ArraySequence<T> arraySequence) {
     cout << '{';
     for (int i = 0; i < arraySequence.GetLength(); i++) {
         cout << arraySequence[i];
@@ -166,6 +176,7 @@ std::ostream &operator<<(std::ostream &cout, ArraySequence<T>arraySequence) {
     cout << '}';
     return cout;
 }
+
 #endif //LAB2_ArraySequence_H
 
 /*

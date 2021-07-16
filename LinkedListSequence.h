@@ -17,7 +17,9 @@ public:
     public:
         int lenght;
         int index;
+
         IndexOutOfRange(int lenght, int index) : lenght(lenght), index(index) {};
+
         IndexOutOfRange() : lenght(-1), index(-1) {};
     };
 
@@ -29,8 +31,18 @@ public:
         linkedlist = LinkedList<T>(items, count);
     }
 
-    LinkedListSequence(const LinkedList<T> &list) {  //копирующий конструктор
+    LinkedListSequence(const LinkedList<T> &list) {
         linkedlist = LinkedList<T>(list);
+    }
+
+    LinkedListSequence(const LinkedListSequence<T> &list) {  //копирующий конструктор
+        linkedlist = list.linkedlist;
+    }
+
+    explicit LinkedListSequence(const Sequence<T> &list) {
+        for (size_t i = 0; i < list.GetLength(); i++) {
+            Append(list[i]);
+        }
     }
 
     T GetFirst() {
@@ -51,10 +63,10 @@ public:
         return linkedlist.Get(index);
     }
 
-    void Set(int index,T item) {
+    void Set(int index, T item) {
         if (index < 0 || index >= linkedlist.GetLength())
             throw IndexOutOfRange(linkedlist.GetLength(), index);
-        return linkedlist.Set(index,item);
+        return linkedlist.Set(index, item);
     }
 
     T &operator[](int index) {
@@ -101,10 +113,11 @@ public:
         return this;
     }
 
-    friend std::ostream& operator << (std::ostream& cout, LinkedListSequence<T> linkedListSequence) {
+    friend std::ostream &operator<<(std::ostream &cout, LinkedListSequence<T> linkedListSequence) {
         return cout << linkedListSequence.linkedlist;
     }
-    friend std::ostream& operator << (std::ostream& cout, LinkedListSequence<T> *linkedListSequence) {
+
+    friend std::ostream &operator<<(std::ostream &cout, LinkedListSequence<T> *linkedListSequence) {
         return cout << linkedListSequence->linkedlist;
     }
 
