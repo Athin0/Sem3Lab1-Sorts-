@@ -11,7 +11,18 @@ void swap(Sequence<T> &seq, int i1, int i2) {
     seq.Set(i1, seq.Get(i2));
     seq.Set(i2, item);
 }
-
+template<class T>
+T FindMaxMin( Sequence<T> &vec, bool tupe=0){
+    T max = vec[0];
+    T min = vec[0];
+    for (int i = 1; i < vec.GetLength(); i++) {
+        if (max < vec[i]) max = vec[i];
+        if (min > vec[i]) min = vec[i];
+    }
+    if (!tupe)
+        return max;
+    else return min;
+}
 template<class T>
 void sortBubble(Sequence<T> &vec) {
     for (int i = 0; i < vec.GetLength(); i++)
@@ -180,33 +191,33 @@ void sortCounting(Sequence<T> &vec) {
 }
 
 template<class T>
-void sortShell(Sequence<T> &vec){
-    size_t size= vec.GetLength();
+void sortShell(Sequence<T> &vec) {
+    size_t size = vec.GetLength();
     //ArraySequence<T> d;
-    int d= 1;
-    int n=0;
-    while(d<size){
+    int d = 1;
+    int n = 0;
+    while (d < size) {
         n++;
-        d=pow(2,n)-1;
+        d = pow(2, n) - 1;
     }
-    while(d>0){
-        for( int i=0;i<size;i++) {
+    while (d > 0) {
+        for (int i = 0; i < size; i++) {
             for (int j = i + d; j < size; j += d) {
                 if (vec[i] > vec[j])
                     swap(vec, i, j);
             }
         }
         n--;
-        d=pow(2,n)-1;
+        d = pow(2, n) - 1;
     }
 }
 
 template<class T>
-void sortShell2(Sequence<T> &vec, Sequence<T> &d){
-    size_t size= vec.GetLength();
-    int n=d.GetLength()-1;
-    while(n>=0){
-        for( int i=0;i<size;i++) {
+void sortShell2(Sequence<T> &vec, Sequence<T> &d) {
+    size_t size = vec.GetLength();
+    int n = d.GetLength() - 1;
+    while (n >= 0) {
+        for (int i = 0; i < size; i++) {
             for (int j = i + d[n]; j < size; j += d[n]) {
                 if (vec[i] > vec[j])
                     swap(vec, i, j);
@@ -214,4 +225,49 @@ void sortShell2(Sequence<T> &vec, Sequence<T> &d){
         }
         n--;
     }
+}
+
+template<class T>
+void sortSquareSelection(Sequence<T> &vec) {
+    T max = FindMaxMin(vec);
+    int min = 0;
+    size_t size = vec.GetLength();
+    ArraySequence<T> resultA;
+    int nGroups = (int) sqrt((double) size);
+    if (pow((double) nGroups, 2) < size)
+        nGroups++;
+
+    ArraySequence<T> MinInGroups;
+
+    for (int i = nGroups * min; i < size; i += nGroups) {   //создали массив с минимальными элментами из каждой группы
+        min = i;
+        for (int j = i + 1; j < i + nGroups && j < size; j++)
+            if (vec[j] < vec[min])
+                min = j;
+        MinInGroups.Append(vec[min]);
+        vec[min] = max;
+    }
+    while (true) {
+        min = 0;
+        for (int k = 1; k < nGroups; k++)
+            if (MinInGroups[k] < MinInGroups[min])
+                min = k;
+        resultA.Append(MinInGroups[min]);
+
+        if (resultA.GetLength() == size)
+            break;
+
+        int i = nGroups * min;
+        min = i;
+        for (int j = i + 1; j < i + nGroups && j < size; j++)  //ищем в группе в которой взяли минимальный элемент новый минимум
+            if (vec[j] < vec[min])
+                min = j;
+        MinInGroups[ (i / nGroups)] = vec[min];
+        vec[min] = max;
+    }
+
+    for (int i = 0; i < size; i++)
+        vec[i] = resultA[i];
+
+
 }

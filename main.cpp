@@ -18,7 +18,7 @@ int main() {
     cout << a <<endl;
     ArraySequence<int> k;
     k.Append(1);
-    sortShell2(a,k);
+    sortSquareSelection(a);
 
     cout<< a;
     Correct(a);
