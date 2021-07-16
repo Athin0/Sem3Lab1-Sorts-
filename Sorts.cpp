@@ -11,8 +11,9 @@ void swap(Sequence<T> &seq, int i1, int i2) {
     seq.Set(i1, seq.Get(i2));
     seq.Set(i2, item);
 }
+
 template<class T>
-T FindMaxMin( Sequence<T> &vec, bool tupe=0){
+T FindMaxMin(Sequence<T> &vec, bool tupe = 0) {
     T max = vec[0];
     T min = vec[0];
     for (int i = 1; i < vec.GetLength(); i++) {
@@ -23,6 +24,7 @@ T FindMaxMin( Sequence<T> &vec, bool tupe=0){
         return max;
     else return min;
 }
+
 template<class T>
 void sortBubble(Sequence<T> &vec) {
     for (int i = 0; i < vec.GetLength(); i++)
@@ -259,10 +261,11 @@ void sortSquareSelection(Sequence<T> &vec) {
 
         int i = nGroups * min;
         min = i;
-        for (int j = i + 1; j < i + nGroups && j < size; j++)  //ищем в группе в которой взяли минимальный элемент новый минимум
+        for (int j = i + 1;
+             j < i + nGroups && j < size; j++)  //ищем в группе в которой взяли минимальный элемент новый минимум
             if (vec[j] < vec[min])
                 min = j;
-        MinInGroups[ (i / nGroups)] = vec[min];
+        MinInGroups[(i / nGroups)] = vec[min];
         vec[min] = max;
     }
 
@@ -270,4 +273,29 @@ void sortSquareSelection(Sequence<T> &vec) {
         vec[i] = resultA[i];
 
 
+}
+
+template<class T>
+void sortBinaryInsertion(Sequence<T> &vec) {
+    T temp;
+    int left, rigth, mid;
+    for (int i = 1; i < vec.GetLength(); i++) {
+        if (vec[i - 1] > vec[i]) {
+            temp = vec[i];
+            left = 0;
+            rigth = i - 1;
+            do {
+                mid = (rigth - left) / 2;
+                if (vec[mid] < temp) left = mid + 1;
+                else rigth = mid ;
+            } while (left <= rigth);
+            for (int j = i - 1; j >= left; j--) {
+                vec[j + 1] = vec[j];
+            }
+            vec[left] = temp;
+        }
+        for (int i = 0; i < vec.GetLength(); i++)
+         cout<< vec[i] <<" ";
+        cout<<"/"<< endl;
+    }
 }
