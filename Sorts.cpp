@@ -301,29 +301,15 @@ void sortBinaryInsertion(Sequence<T> &vec) {
 
 template<typename T>
 class Node{
-    Node* left;
-    Node* right;
+    Node* left = nullptr;
+    Node* right= nullptr;
     T value;
-    /*
-    explicit Node(T value){
-        this= new Node;
-        left= nullptr;
-        right= nullptr;
-        this->value= value;
-    }
-    explicit Node(){
-        this= (Node<T>*) malloc(sizeof(Node<T>)) ;
-        left= nullptr;
-        right= nullptr;
-    }*/
+    explicit Node(T val) : value(val) {};
+
 public:
     void add(Node* &root, T value){
         if (root== nullptr){
-            //root =Node(value);
-            Node node;
-            root = (Node*)malloc(sizeof(Node));
-            root->left = root->right = nullptr;
-            root->value = value;
+            root = new Node(value);
             return;
         }
         if (root->value > value)
