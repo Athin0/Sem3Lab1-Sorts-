@@ -308,7 +308,7 @@ void sortBinaryInsertion(Sequence<T> &vec) {
             do {
                 mid = (right + left) / 2;
                 if (vec[mid] < temp) left = mid + 1;
-                else right = mid ;
+                else right = mid;
             } while (left < right);
             for (int j = i - 1; j >= left; j--) {
                 vec[j + 1] = vec[j];
@@ -321,15 +321,16 @@ void sortBinaryInsertion(Sequence<T> &vec) {
 
 //Сортировка бинарным деревом
 template<typename T>
-class Node{
-    Node* left = nullptr;
-    Node* right= nullptr;
+class Node {
+    Node *left = nullptr;
+    Node *right = nullptr;
     T value;
+
     explicit Node(T val) : value(val) {};
 
 public:
-    void add(Node* &root, T value){
-        if (root== nullptr){
+    void add(Node *&root, T value) {
+        if (root == nullptr) {
             root = new Node(value);
             return;
         }
@@ -338,22 +339,25 @@ public:
         else
             add(root->right, value);
     }
-    void input(Node* &root, Sequence<T> &vec) {
+
+    void input(Node *&root, Sequence<T> &vec) {
         for (int i = 0; i < vec.GetLength(); i++) {
             add(root, vec[i]);
         }
     }
-    void output(Node* &root, Sequence<T> &vec, int &i){
-        if (root== nullptr){
+
+    void output(Node *&root, Sequence<T> &vec, int &i) {
+        if (root == nullptr) {
             return;
         }
-        output(root->left,vec,i);
-        vec[i]=root->value;
+        output(root->left, vec, i);
+        vec[i] = root->value;
         i++;
-        output(root->right,vec,i);
+        output(root->right, vec, i);
     }
-    void cleanTree(Node* &root){
-        if(root== nullptr)
+
+    void cleanTree(Node *&root) {
+        if (root == nullptr)
             return;
         cleanTree(root->left);
         cleanTree(root->right);
@@ -362,41 +366,53 @@ public:
 };
 
 template<class T>
-void sortBinaryTree(Sequence<T> &vec){
-    int i=0;
-    Node<T>* root = nullptr;
-    root->input(root,vec);
-    root->output(root,vec,i);
+void sortBinaryTree(Sequence<T> &vec) {
+    int i = 0;
+    Node<T> *root = nullptr;
+    root->input(root, vec);
+    root->output(root, vec, i);
     root->cleanTree(root);
 }
 
 //Пирамидальная сортировка
-template <class T>
-void Heapify(Sequence<T>& vec,int n,int i){
-    int max=i;
-    int l=2*i;
-    int p=2*i+1;
-    if (l<n && vec[i]<vec[l]) max= l;
-    if (p<n && vec[max]<vec[p]) max= p;
-    if(max !=i){
-        swap(vec,i,max);
-        Heapify(vec,n,max);
+template<class T>
+void Heapify(Sequence<T> &vec, int n, int i) {
+    int max = i;
+    int l = 2 * i + 1;
+    int p = 2 * i + 2;
+    if (l < n && vec[i] < vec[l]) max = l;
+    if (p < n && vec[max] < vec[p]) max = p;
+    if (max != i) {
+        swap(vec, i, max);
+        Heapify(vec, n, max);
     }
 }
 
 template<class T>
-void BuildMaxHeap(Sequence<T> &vec){
-    int size= vec.GetLength();
-    for (int i=size/2;i>=0;i--)
-        Heapify(vec,size,i);
+void BuildMaxHeap(Sequence<T> &vec) {
+    int size = vec.GetLength();
+    for (int i = size / 2; i >= 0; i--)
+        Heapify(vec, size, i);
 }
 
 template<class T>
-void sortHeap(Sequence<T> &vec){
-    size_t size= vec.GetLength();
+void sortHeap(Sequence<T> &vec) {
+    size_t size = vec.GetLength();
     BuildMaxHeap(vec);
-    for(int i=size-1;i>0;i--){
-        swap(vec,i,0);
-        Heapify(vec,i,0);
+    for (int i = size - 1; i > 0; i--) {
+        swap(vec, i, 0);
+        Heapify(vec, i, 0);
     }
+}
+
+template<class T>
+void sortBitonic(Sequence<T> &vec) {
+    size_t size = vec.GetLength();
+    for (int p = 1; p < size; p *= 2)
+        for (int k = p; k > 0; k /= 2)
+            for (int j = k % p; j + k < size; j += 2*k)
+                for (int i = 0; i < size - j - k; i++)
+                    if ((j + i) / (2*p) == (j + i + k) / (2*p))
+                        if (vec[j + i]> vec[j + i + k])
+                            swap(vec,j+i,j+i+k);
 }

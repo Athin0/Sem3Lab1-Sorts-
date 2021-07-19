@@ -18,7 +18,7 @@ int main() {
     cout << a <<endl;
     ArraySequence<int> k;
     k.Append(1);
-    sortHeap(a);
+    sortBitonic(a);
 
     cout<< a;
     Correct(a);
