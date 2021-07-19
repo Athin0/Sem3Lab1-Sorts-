@@ -278,24 +278,87 @@ void sortSquareSelection(Sequence<T> &vec) {
 template<class T>
 void sortBinaryInsertion(Sequence<T> &vec) {
     T temp;
-    int left, rigth, mid;
+    int left, right, mid;
     for (int i = 1; i < vec.GetLength(); i++) {
         if (vec[i - 1] > vec[i]) {
             temp = vec[i];
             left = 0;
-            rigth = i - 1;
+            right = i - 1;
             do {
-                mid = (rigth - left) / 2;
+                mid = (right + left) / 2;
                 if (vec[mid] < temp) left = mid + 1;
-                else rigth = mid ;
-            } while (left <= rigth);
+                else right = mid ;
+            } while (left < right);
             for (int j = i - 1; j >= left; j--) {
                 vec[j + 1] = vec[j];
             }
             vec[left] = temp;
         }
-        for (int i = 0; i < vec.GetLength(); i++)
-         cout<< vec[i] <<" ";
-        cout<<"/"<< endl;
+
     }
+}
+
+
+template<typename T>
+class Node{
+    Node* left;
+    Node* right;
+    T value;
+    /*
+    explicit Node(T value){
+        this= new Node;
+        left= nullptr;
+        right= nullptr;
+        this->value= value;
+    }
+    explicit Node(){
+        this= (Node<T>*) malloc(sizeof(Node<T>)) ;
+        left= nullptr;
+        right= nullptr;
+    }*/
+public:
+    void add(Node* &root, T value){
+        if (root== nullptr){
+            //root =Node(value);
+            Node node;
+            root = (Node*)malloc(sizeof(Node));
+            root->left = root->right = nullptr;
+            root->value = value;
+            return;
+        }
+        if (root->value > value)
+            add(root->left, value);
+        else
+            add(root->right, value);
+    }
+    void input(Node* &root, Sequence<T> &vec) {
+        for (int i = 0; i < vec.GetLength(); i++) {
+            add(root, vec[i]);
+        }
+    }
+    void output(Node* &root, Sequence<T> &vec, int &i){
+        if (root== nullptr){
+            return;
+        }
+        output(root->left,vec,i);
+        vec[i]=root->value;
+        i++;
+        output(root->right,vec,i);
+    }
+    void cleanTree(Node* &root){
+        if(root== nullptr)
+            return;
+        cleanTree(root->left);
+        cleanTree(root->right);
+        delete root;
+    }
+};
+
+template<class T>
+void sortBinaryTree(Sequence<T> &vec){
+    int i=0;
+    Node<T>* root = nullptr;
+    root->input(root,vec);
+    root->output(root,vec,i);
+    root->cleanTree(root);
 }
