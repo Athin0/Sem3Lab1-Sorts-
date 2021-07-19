@@ -25,6 +25,8 @@ T FindMaxMin(Sequence<T> &vec, bool tupe = 0) {
     else return min;
 }
 
+//Сортировка пузырьком
+
 template<class T>
 void sortBubble(Sequence<T> &vec) {
     for (int i = 0; i < vec.GetLength(); i++)
@@ -34,6 +36,8 @@ void sortBubble(Sequence<T> &vec) {
             }
         }
 }
+
+//Шейкерная сортировка
 
 template<class T>
 void sortCocktail(Sequence<T> &vec) {
@@ -55,6 +59,7 @@ void sortCocktail(Sequence<T> &vec) {
     }
 }
 
+//Сортировка вставками
 
 template<class T>
 void sortInsertion(Sequence<T> &vec) {
@@ -64,6 +69,8 @@ void sortInsertion(Sequence<T> &vec) {
         }
     }
 }
+
+//Сортировка Выбором
 
 template<class T>
 void sortSelection(Sequence<T> &vec) {
@@ -76,6 +83,8 @@ void sortSelection(Sequence<T> &vec) {
         swap(vec, min_ind, i);
     }
 }
+
+//Сортировка слиянием
 
 template<class T>
 void sortMerge(Sequence<T> &array, int first, int last) {
@@ -105,6 +114,8 @@ void Merge(Sequence<T> &array, int begin, int last) {
     for (int j = begin; j < last; j++) array.Set(j, temp_array.Get(j - begin));
 }
 
+
+//Быстрая сортирока (просто)
 
 template<class T>
 int partition(Sequence<T> &A, int low, int high) {
@@ -138,6 +149,7 @@ void sortQuick(Sequence<T> &vec, int low, int high) {
     }
 }
 
+//Быстрая сортировка по Хаору
 
 template<class T>
 int partitionHaore(Sequence<T> &A, int low, int high) {
@@ -166,6 +178,8 @@ void sortQuickHoare(Sequence<T> &vec, int low, int high) {
     }
 }
 
+//Сортирока подсчетом
+
 template<class T>
 void sortCounting(Sequence<T> &vec) {
     T size = vec.GetLength();
@@ -192,6 +206,8 @@ void sortCounting(Sequence<T> &vec) {
     }
 }
 
+//Сортировка Шелла(простая)
+
 template<class T>
 void sortShell(Sequence<T> &vec) {
     size_t size = vec.GetLength();
@@ -214,6 +230,7 @@ void sortShell(Sequence<T> &vec) {
     }
 }
 
+//Сортировк Шелла с выбором диапазона (в виде массива значений)
 template<class T>
 void sortShell2(Sequence<T> &vec, Sequence<T> &d) {
     size_t size = vec.GetLength();
@@ -228,6 +245,8 @@ void sortShell2(Sequence<T> &vec, Sequence<T> &d) {
         n--;
     }
 }
+
+//Квадратичная сортировка
 
 template<class T>
 void sortSquareSelection(Sequence<T> &vec) {
@@ -275,6 +294,8 @@ void sortSquareSelection(Sequence<T> &vec) {
 
 }
 
+
+//Сортировка двоичными вставками
 template<class T>
 void sortBinaryInsertion(Sequence<T> &vec) {
     T temp;
@@ -298,7 +319,7 @@ void sortBinaryInsertion(Sequence<T> &vec) {
     }
 }
 
-
+//Сортировка бинарным деревом
 template<typename T>
 class Node{
     Node* left = nullptr;
@@ -347,4 +368,35 @@ void sortBinaryTree(Sequence<T> &vec){
     root->input(root,vec);
     root->output(root,vec,i);
     root->cleanTree(root);
+}
+
+//Пирамидальная сортировка
+template <class T>
+void Heapify(Sequence<T>& vec,int n,int i){
+    int max=i;
+    int l=2*i;
+    int p=2*i+1;
+    if (l<n && vec[i]<vec[l]) max= l;
+    if (p<n && vec[max]<vec[p]) max= p;
+    if(max !=i){
+        swap(vec,i,max);
+        Heapify(vec,n,max);
+    }
+}
+
+template<class T>
+void BuildMaxHeap(Sequence<T> &vec){
+    int size= vec.GetLength();
+    for (int i=size/2;i>=0;i--)
+        Heapify(vec,size,i);
+}
+
+template<class T>
+void sortHeap(Sequence<T> &vec){
+    size_t size= vec.GetLength();
+    BuildMaxHeap(vec);
+    for(int i=size-1;i>0;i--){
+        swap(vec,i,0);
+        Heapify(vec,i,0);
+    }
 }

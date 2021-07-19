@@ -18,7 +18,7 @@ int main() {
     cout << a <<endl;
     ArraySequence<int> k;
     k.Append(1);
-    sortBinaryTree(a);
+    sortHeap(a);
 
     cout<< a;
     Correct(a);
