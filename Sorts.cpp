@@ -408,10 +408,10 @@ void sortHeap(Sequence<T> &vec) {
 template<class T>
 void sortBitonic(Sequence<T> &vec) {
     size_t size = vec.GetLength();
-    for (int p = 1; p < size; p *= 2)
-        for (int k = p; k > 0; k /= 2)
-            for (int j = k % p; j + k < size; j += 2*k)
-                for (int i = 0; i < size - j - k; i++)
+    for (int p = 1; p < size; p *= 2)   //почти номер этапа (максимальная длина компаратора)
+        for (int k = p; k > 0; k /= 2)    //длина мгновенного компаратора (на каком расстоянии сравниваемые элементы)
+            for (int j = k % p; j + k < size; j += 2*k)  //начальный элемент сравнения и отступ
+                for (int i = 0; i < size - j - k; i++)     //проход по всем элмеентам
                     if ((j + i) / (2*p) == (j + i + k) / (2*p))
                         if (vec[j + i]> vec[j + i + k])
                             swap(vec,j+i,j+i+k);

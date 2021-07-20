@@ -10,7 +10,7 @@ template< typename T>
 void Correct( ArraySequence<T> &a);
 
 int main() {
-    int n=15;
+    int n=32;
     ArraySequence<int> a;
     for (int i = 0; i < n; i++) {
        a.Append(rand()%100);
