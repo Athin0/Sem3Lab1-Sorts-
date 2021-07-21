@@ -10,7 +10,7 @@ template< typename T>
 void Correct( ArraySequence<T> &a);
 
 int main() {
-    int n=32;
+    int n=15;
     ArraySequence<int> a;
     for (int i = 0; i < n; i++) {
        a.Append(rand()%100);
@@ -18,7 +18,7 @@ int main() {
     cout << a <<endl;
     ArraySequence<int> k;
     k.Append(1);
-    sortBitonic(a);
+    sortBinaryTree(a,sr);
 
     cout<< a;
     Correct(a);
@@ -30,7 +30,7 @@ int main() {
 template< typename T>
 void Correct( ArraySequence<T> &a){
     ArraySequence<T> b(a);
-    sortCocktail(b);
+    sortCocktail(b,sr);
     cout<< "\nПравильность:";
     int wrong=0;
     int n= a.GetLength();
