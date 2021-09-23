@@ -31,7 +31,7 @@ public:
         linkedlist = LinkedList<T>(items, count);
     }
 
-    LinkedListSequence(const LinkedList<T> &list) {
+    LinkedListSequence(const LinkedList<T> &list) {                                //**?**
         linkedlist = LinkedList<T>(list);
     }
 
@@ -70,7 +70,8 @@ public:
     }
 
     T &operator[](int index) {
-        if (index < 0 || index >= linkedlist.GetLength()) throw IndexOutOfRange(linkedlist.GetLength(), index);
+        if (index < 0 || index >= linkedlist.GetLength())
+            throw IndexOutOfRange(linkedlist.GetLength(), index);
         return linkedlist[index];
     }
 
@@ -84,7 +85,6 @@ public:
         auto *resList = linkedlist.GetSubList(startIndex, endIndex);
         auto *res = new LinkedListSequence<T>(*resList);
         delete resList;
-
         return res;
     }
 
@@ -113,14 +113,20 @@ public:
         return this;
     }
 
-    friend std::ostream &operator<<(std::ostream &cout, LinkedListSequence<T> linkedListSequence) {
+    friend std::ostream &operator<<(std::ostream &out, LinkedListSequence<T> &linkedListSequence) {
         return cout << linkedListSequence.linkedlist;
     }
 
-    friend std::ostream &operator<<(std::ostream &cout, LinkedListSequence<T> *linkedListSequence) {
+    friend std::ostream &operator<<(std::ostream &out, LinkedListSequence<T> *linkedListSequence) {
         return cout << linkedListSequence->linkedlist;
     }
 
+    LinkedListSequence<T>* copy(){
+        return new LinkedListSequence<T>(*this);
+    }
+    LinkedListSequence<T>* empty(){
+        return new LinkedListSequence<T>();
+    }
 };
 
 #endif //LAB2_LINKEDLISTSEQUENCE_H

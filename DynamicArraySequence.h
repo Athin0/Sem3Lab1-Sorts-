@@ -37,15 +37,15 @@ public:
         dynamicArray = array;
     }
 
-    ArraySequence(const ArraySequence<T> &array) {   //копирующий конструктор
+    ArraySequence(const ArraySequence<T> &array) {
         dynamicArray = array.dynamicArray;
     }
 
-    explicit ArraySequence(const Sequence<T> &array) {
-        for (size_t i = 0; i < array.GetLength(); i++) {
-            Append(array[i]);
-        }
-    }
+    //explicit ArraySequence(const Sequence<T> &array) {
+    //    for (size_t i = 0; i < array.GetLength(); i++) {
+    //        Append(array[i]);
+    //    }
+    //}
 
     T GetFirst() {
         if (GetLength() == 0)
@@ -162,25 +162,35 @@ public:
         dynamicArray.Resize(dynamicArray.GetLength() - 1);
         return item;
     }
+
+    ArraySequence<T>* copy(){
+        return new ArraySequence<T>(*this);
+    }
+
+    ArraySequence<T>* empty(){
+        return new ArraySequence<T>();
+    }
+
+    friend std::ostream &operator<<(std::ostream &out, ArraySequence<T> &arraySequence) {
+        return cout << arraySequence.dynamicArray;
+    }
+
+    friend std::ostream &operator<<(std::ostream &out, ArraySequence<T>* arraySequence) {
+        return cout << arraySequence->dynamicArray;
+    }
 };
 
-template<class T>
-std::ostream &operator<<(std::ostream &cout, ArraySequence<T> arraySequence) {
-    cout << '{';
-    for (int i = 0; i < arraySequence.GetLength(); i++) {
-        cout << arraySequence[i];
-        if (i != arraySequence.GetLength() - 1) {
-            cout << ", ";
-        }
-    }
-    cout << '}';
-    return cout;
-}
+//template<class T>
+//std::ostream &operator<<(std::ostream &cout, ArraySequence<T> arraySequence) {
+//    cout << '{';
+//    for (int i = 0; i < arraySequence.GetLength(); i++) {
+//        cout << arraySequence[i];
+//        if (i != arraySequence.GetLength() - 1) {
+//            cout << ", ";
+//        }
+//    }
+//    cout << '}';
+//    return cout;
+//}
 
 #endif //LAB2_ArraySequence_H
-
-/*
-int operator==(ArraySequence<T> vector_arr) {
-    return dynamicArray == vector_arr.dynamicArray;
-}
-/**/

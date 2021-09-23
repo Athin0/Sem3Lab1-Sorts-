@@ -10,18 +10,21 @@ template< typename T>
 void Correct( ArraySequence<T> &a);
 
 int main() {
-    int n=15;
+    int n=23;
     ArraySequence<int> a;
     for (int i = 0; i < n; i++) {
        a.Append(rand()%100);
     }
     cout << a <<endl;
-    ArraySequence<int> k;
-    k.Append(1);
-    sortBinaryTree(a,sr);
-
-    cout<< a;
-    Correct(a);
+   //Sequence<int> *k;
+    auto k = sortBubble(&a,sr);
+    //k.Append(1);
+    //sortBitonic(a,sr);
+    //Sorter<int>* ah = new Sorter<int>();
+    //ah->Qsort(a);
+    cout<< *k<< endl;
+    cout << a;
+    //Correct(a);
     return 0;
 }
 

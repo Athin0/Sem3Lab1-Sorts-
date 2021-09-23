@@ -4,6 +4,22 @@
 
 #include "Sorts.h"
 #include "DynamicArraySequence.h"
+#include "Sequence.h"
+
+
+template<class T>
+class Sorter
+{
+public:
+void Qsort(Sequence<T> &a){
+    for (int i = 0; i < a.GetLength(); i++)
+        for (int j = 0; j < a.GetLength() - i - 1; j++) {
+            if (a.Get(j) > a.Get(j+1)) {
+                swap(a, j, j + 1);
+            }
+        }
+};
+};
 
 template<class T>
 bool sr(T a, T b){
@@ -15,6 +31,12 @@ void swap(Sequence<T> &seq, int i1, int i2) {
     T item = seq.Get(i1);
     seq.Set(i1, seq.Get(i2));
     seq.Set(i2, item);
+}
+template<class T>
+void swap(Sequence<T> *seq, int i1, int i2) {
+    T item = seq->Get(i1);
+    seq->Set(i1, seq->Get(i2));
+    seq->Set(i2, item);
 }
 
 template<class T>
@@ -33,13 +55,15 @@ T FindMaxMin(Sequence<T> &vec, bool tupe = 0) {
 //Сортировка пузырьком
 
 template<class T>
-void sortBubble(Sequence<T> &vec,bool  (*func)(T,T)) {
-    for (int i = 0; i < vec.GetLength(); i++)
-        for (int j = 0; j < vec.GetLength() - i - 1; j++) {
-            if (func(vec.Get(j), vec.Get(j + 1))) {
+Sequence<T>* sortBubble(Sequence<T>* vec1,bool  (*func)(T,T)) {
+    auto vec= vec1->copy();
+    for (int i = 0; i < vec->GetLength(); i++)
+        for (int j = 0; j < vec->GetLength() - i - 1; j++) {
+            if (func(vec->Get(j), vec->Get(j + 1))) {
                 swap(vec, j, j + 1);
             }
         }
+    return vec;
 }
 
 //Шейкерная сортировка
