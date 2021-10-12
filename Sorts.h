@@ -189,15 +189,15 @@ public:
 //Быстрая сортировка по Хаору
 
 
-    static int partitionHaore(Sequence<T> &A, int low, int high, bool  (*func)(T, T)) {
-        T pivot = (A[low] + A[high - 1]) / 2;
+    static int partitionHoare(Sequence<T> &A, int low, int high, bool  (*func)(T, T)) {
+        T pivot = (A.Get(low) +A.Get(high))/2  ;
         int begin = low;
-        int end = high - 1;
+        int end = high ;
         while (true) {
-            while (func(pivot, A[begin])) {
+            while (func(pivot, A.Get(begin))) {
                 begin++;
             }
-            while (func(A[end], pivot)) {
+            while (func(A.Get(end), pivot)) {
                 end--;
             }
             if (begin >= end)
@@ -209,10 +209,10 @@ public:
 
     static Sequence<T> *sortQuickHoare(Sequence<T> &vec1, int low, int high, bool  (*func)(T, T)) {
         auto vec = vec1.copy();
-        if (high > low) {
-            int p = partitionHaore(*vec, low, high, func);
-            sortQuick(*vec, low, p, func);
-            sortQuick(*vec, p, high, func);
+        if ( low< high ) {
+            int p = partitionHoare(*vec, low, high, func);
+            sortQuickHoare(*vec, low, p, func);
+            sortQuickHoare(*vec, p+1, high, func);
         }
 
         return vec;
@@ -364,7 +364,7 @@ public:
                     else right = mid;
                 } while (left < right);
                 for (int j = i - 1; j >= left; j--) {
-                    vec->Set(j-1,  vec->Get(j));
+                    vec->Set(j+1,  vec->Get(j));
                 }
                 vec->Set(left,temp);
             }
