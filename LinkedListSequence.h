@@ -38,6 +38,11 @@ public:
     LinkedListSequence(const LinkedListSequence<T> &list) {  //копирующий конструктор
         linkedlist = list.linkedlist;
     }
+    LinkedListSequence(const ArraySequence<T> &list) {
+        for (size_t i = 0; i < list.GetLength(); i++) {
+            Append(list.Get(i));
+        }
+    }
 
     explicit LinkedListSequence(const Sequence<T> &list) {
         for (size_t i = 0; i < list.GetLength(); i++) {

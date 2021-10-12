@@ -41,11 +41,11 @@ public:
         dynamicArray = array.dynamicArray;
     }
 
-    //explicit ArraySequence(const Sequence<T> &array) {
-    //    for (size_t i = 0; i < array.GetLength(); i++) {
-    //        Append(array[i]);
-    //    }
-    //}
+    explicit ArraySequence(const Sequence<T> &array) {
+        for (size_t i = 0; i < array.GetLength(); i++) {
+            Append(array.Get(i));
+        }
+    }
 
     T GetFirst() {
         if (GetLength() == 0)
@@ -99,7 +99,7 @@ public:
     }
 
     int GetLength() const {
-        const ArraySequence<int> *a = this;
+        //const ArraySequence<int> *a = this;
         return dynamicArray.GetLength();
     }
 
