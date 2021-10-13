@@ -7,45 +7,41 @@
 #include "Menu.h"
 using namespace std;
 
-//template< typename T>
-//void Correct( ArraySequence<T> &a);
+template< typename T>
+void Correct( Sequence<T> *a);
 
 int main() {
     mainMenuSequence();
   return 0;
 }
-
-//    int n=10;
-//    ArraySequence<int> a;
-//    for (int i = 0; i < n; i++) {
-//       a.Append(rand()%100);
-//    }
-//    cout << a <<endl;
-//   //Sequence<int> *k;
-//    auto k = Sorter<int>::sortQuickHoare(a,0,a.GetLength()-1,Sorter<int>::sr);
-//    //k.Append(1);
-//    //sortBitonic(a,sr);
-//    //Sorter<int>* ah = new Sorter<int>();
-//    //ah->Qsort(a);
-//    cout<< k << endl;
-//    cout << a;
-//    //Correct(a);
-//    return 0;
-//}
+//
+ //     int n=10;
+ //     ArraySequence<int> a;
+ //     for (int i = 0; i < n; i++) {
+ //        a.Append(rand()%100);
+ //     }
+ //     cout << a <<endl;
+ //     //Sequence<int> *k;
+ //     auto k = Sorter<int>::sortCounting(a,Sorter<int>::sr);
+//
+ //     cout<< k << endl;
+ //     cout << a;
+ //     Correct(k);
+ //     return 0;
+ // }
 //
 //
-//template< typename T>
-//void Correct( ArraySequence<T> &a){
-//    ArraySequence<T> b(a);
-//    sortCocktail(b,sr);
-//    cout<< "\nПравильность:";
-//    int wrong=0;
-//    int n= a.GetLength();
-//    for (int i = 0; i < n; i++) {
-//        if(a[i]!=b[i]){
-//            cout<< "блять ";
-//            wrong++;
-//        }
-//    }
-//    if (!wrong) cout<< "Норм!";
-//}
+ // template< typename T>
+ // void Correct( Sequence<T>* a){
+ //     auto b= Sorter<int>::sortCocktail(*a,Sorter<int>::sr);
+ //     cout<< "\nПравильность:";
+ //     int wrong=0;
+ //     int n= a->GetLength();
+ //     for (int i = 0; i < n; i++) {
+ //         if(a->Get(i)!=b->Get(i)){
+ //             cout<< "блять ";
+ //             wrong++;
+ //         }
+ //     }
+ //     if (!wrong) cout<< "Норм!";
+ // }

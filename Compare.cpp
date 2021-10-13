@@ -153,23 +153,6 @@ void SortType(ArraySequence<Sequence<T> *> *ArrInt) {
 
 
 void compare() {
-    //std::cout << "Выберите сортировку:\n"
-    //          << "\t0 - Выход\n"
-    //          << "\t1 - BubbleSort\n"
-    //          << "\t2 - CocktailSort\n"
-    //          << "\t3 - InsertionSort\n"
-    //          << "\t4 - SelectionSort\n"
-    //          << "\t5 - MergeSort\n"
-    //          << "\t6 - QuickSort\n"
-    //          << "\t7 - QuickHoareSort\n"
-    //          << "\t8 - CountingSort\n"
-    //          << "\t9 - ShellSort\n"
-    //          << "\t10 - Shell2Sort\n"
-    //          << "\t11 - SquareSelectionSort\n"
-    //          << "\t12 - BinaryInsertionSort\n"
-    //          << "\t13 - BinaryTreeSort\n"
-    //          << "\t14 - HeapSort\n"
-    //          << "\t15 - BitonicSort\n";
 
     std::string NameSorts[15] = {
             " BubbleSort ",
@@ -189,8 +172,8 @@ void compare() {
             " BitonicSort "};
 
 
-    std::cout << "Выберите количество элементовот  10 до 100 \n";
-    int length = GetInt(10, 300000000);
+    std::cout << "Выберите количество элементовот  10 до 1000 \n";
+    int length = GetInt(10, 1000);
 
     cout << "-------------------------------------------------------------------------------- \n";
     ArraySequence<int> arr;
@@ -247,11 +230,11 @@ ArraySequence<double> *getSortTime(ArraySequence<int> &arr1) {
                 time->Append(sort2.Time());
             case 7:
                 sort2.Start();
-                Sorter<T>::sortQuickHoare(arr1, 0, arr1.GetLength() - 1, cmp<T>);    //аааа
+                Sorter<T>::sortQuickHoare(arr1, 0, arr1.GetLength() - 1, cmp<T>);
                 time->Append(sort2.Time());
             case 8:
                 sort2.Start();
-                //Sorter<T>::sortCounting(arr1, cmp<T>);  //а че не робит то??
+               // Sorter<T>::sortCounting(arr1, cmp<T>);  //а че не робит то??
                 time->Append(sort2.Time());
             case 9:
                 sort2.Start();

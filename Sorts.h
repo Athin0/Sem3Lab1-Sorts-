@@ -163,13 +163,6 @@ public:
             }
         }
         swap(A, temp, high);
-        /*
-        cout<<pivot<<":::: ";
-        for(int i =low;i<high;i++){
-            cout<<A[i]<<" ";
-        }
-        cout<<"/ "<<temp<< "\n";
-         */
         return temp;
 
     }
@@ -187,7 +180,6 @@ public:
     }
 
 //Быстрая сортировка по Хаору
-
 
     static int partitionHoare(Sequence<T> &A, int low, int high, bool  (*func)(T, T)) {
         T pivot = (A.Get(low) +A.Get(high))/2  ;
@@ -207,14 +199,16 @@ public:
     }
 
 
+    static void sortQuickHoareVoid(Sequence<T> &vec, int low, int high, bool  (*func)(T, T)) {
+        if ( low< high ) {
+            int p = partitionHoare(vec, low, high, func);
+            sortQuickHoareVoid(vec, low, p, func);
+            sortQuickHoareVoid(vec, p+1, high, func);
+        }
+    }
     static Sequence<T> *sortQuickHoare(Sequence<T> &vec1, int low, int high, bool  (*func)(T, T)) {
         auto vec = vec1.copy();
-        if ( low< high ) {
-            int p = partitionHoare(*vec, low, high, func);
-            sortQuickHoare(*vec, low, p, func);
-            sortQuickHoare(*vec, p+1, high, func);
-        }
-
+        sortQuickHoareVoid(*vec,low,high,func);
         return vec;
     }
 

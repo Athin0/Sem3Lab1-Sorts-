@@ -23,7 +23,7 @@ void mainMenuSequence() {
              << "\t6: Сравнить тайминги\n"
              << "\t7: Закончить выполнение программы\n"
              << "Введите число: ";
-        cin >> item;
+        item= GetInt();
         if (item < 1 || item > 7) {
             cout << "Ошибка! Нет такого пункта! Повторите попытку\n";
             continue;
@@ -50,6 +50,7 @@ void mainMenuSequence() {
                 break;
             case 6:
                 compare();
+                break;
             default:
                 break;
         }
@@ -76,7 +77,7 @@ void readSequence(ArraySequence<ArraySequence<int>*> *arrDA,
         if (count < 0) {
             cout << "Последовательности длины не поддерживаются!\n: ";
         }
-        cin >> count;
+        count= GetInt();
 
         if (count == -1)
             return;
@@ -137,7 +138,7 @@ void readTypeSequence(Sequence<ArraySequence<T>*> *arr, int count) {
     ArraySequence<T> element;
     for (int i = 0; i < count; i++) {
         T item;
-        cin >> item;
+        item =GetInt();
         element.Append(item);
     }
 
@@ -146,7 +147,7 @@ void readTypeSequence(Sequence<ArraySequence<T>*> *arr, int count) {
          << "\nЗаписать этот вектор? (1 - да, 0 - повторить попытку ввода, "
          << "другое число приведёт к выходу их функции)\n:";
     int item;
-    cin >> item;
+    item =GetInt();
 
     switch (item) {
         default:
@@ -169,7 +170,7 @@ void readTypeSequence(Sequence<LinkedListSequence<T>*> *arr, int count) {
     LinkedListSequence<T> element;
     for (int i = 0; i < count; i++) {
         T item;
-        cin >> item;
+        item =GetInt();
         element.Append(item);
     }
 
@@ -178,7 +179,7 @@ void readTypeSequence(Sequence<LinkedListSequence<T>*> *arr, int count) {
          << "\nЗаписать этe последовательность? (1 - да, 0 - повторить попытку ввода, "
          << "другое число приведёт к выходу их функции)\n:";
     int item;
-    cin >> item;
+    item=GetInt();
 
     switch (item) {
         default:
