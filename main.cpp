@@ -4,7 +4,7 @@
 #include "random"
 #include "DynamicArraySequence.h"
 #include "LinkedListSequence.h"
-#include "Menu.h"
+#include "Menu.cpp"
 
 using namespace std;
 

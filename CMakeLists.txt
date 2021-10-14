@@ -13,6 +13,7 @@ add_executable(
         LinkedList.cpp
         Sorts.cpp
         Menu.cpp
+        Menu.h
         baseFunc.cpp
         Compare.cpp
         Tests.h

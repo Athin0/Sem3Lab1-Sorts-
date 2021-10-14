@@ -50,6 +50,7 @@ CMakeFiles/Sorts.dir/main.cpp.o: \
  ../DynamicArraySequence.h \
  ../LinkedList.h \
  ../LinkedListSequence.h \
+ ../Menu.cpp \
  ../Menu.h \
  ../Sequence.h \
  ../Sorts.cpp \

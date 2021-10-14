@@ -8,7 +8,7 @@
 //1
 template<class T>
 void readSequence(ArraySequence<ArraySequence<T>*> *arrDA,
-                  LinkedListSequence<ArraySequence<T> *> *arrLL) {
+                  ArraySequence<LinkedListSequence<T> *> *arrLL) {
 
     int count = 0;
 
@@ -188,11 +188,9 @@ void generateRandomSequence(ArraySequence<ArraySequence<T> *> *arr, int count, T
 }
 
 
-template<class T>
-void generateRandomSequence(ArraySequence<LinkedListSequence<T> *> *arr, int count, T (*func)());
 
 //3
-void printSequence(ArraySequence<ArraySequence<int> *> *arrDA,
+static void printSequence(ArraySequence<ArraySequence<int> *> *arrDA,
                    ArraySequence<LinkedListSequence<int> *> *arrLL) {
     int type = GetType();
     switch (type) {
@@ -236,7 +234,7 @@ void printTypeSequence(ArraySequence<Sequence<T> *> *arr) {
 }
 
 //4
-void deleteSequence(ArraySequence<ArraySequence<int> *> *arrDA,
+static void deleteSequence(ArraySequence<ArraySequence<int> *> *arrDA,
                     ArraySequence<LinkedListSequence<int> *> *arrLL) {
 
     auto item = GetType();
@@ -328,7 +326,7 @@ void generateRandomSequence(ArraySequence<LinkedListSequence<T> *> *arr, int cou
     }
 }
 
-void mainMenuSequence() {
+static void mainMenuSequence() {
     ArraySequence<ArraySequence<int> *> arrDA;
     ArraySequence<LinkedListSequence<int> *> arrLL;
     int item;
