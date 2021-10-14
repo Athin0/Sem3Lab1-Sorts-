@@ -3,14 +3,14 @@
 //
 
 #include "Compare.h"
-#include "Sorts.h"
-#include "LinkedListSequence.h"
-#include "DynamicArraySequence.h"
-#include "Time.h"
+//#include "Sorts.h"
+//#include "LinkedListSequence.h"
+//#include "DynamicArraySequence.h"
+//#include "Time.h"
 
-template<class T>
-bool (*cmp)(T a, T b) = Sorter<int>::sr;
-
+//template<class T>
+//bool (*cmp)(T a, T b) = Sorter<int>::cmp;
+/*
 void SortSequence(ArraySequence<ArraySequence<int> *> *ArrDA, ArraySequence<LinkedListSequence<int> *> *ArrLL) {
     std::cout << "Извенить существующий массив или создать новый?\n"
               << "\t0 - Выйти\n"
@@ -103,7 +103,7 @@ void SortType(ArraySequence<Sequence<T> *> *ArrInt) {
             tempSeq = Sorter<T>::sortSelection(*ArrTemp, cmp<T>);
             break;
         case 5:
-            tempSeq = Sorter<T>::sortMerge(*ArrTemp, 0, ArrTemp->GetLength(), cmp<T>);
+            tempSeq = Sorter<T>::sortMerge(*ArrTemp,  cmp<T>);
             break;
         case 6:
             tempSeq = Sorter<T>::sortQuick(*ArrTemp, 0, ArrTemp->GetLength() - 1, cmp<T>);
@@ -222,7 +222,7 @@ ArraySequence<double> *getSortTime(ArraySequence<int> &arr1) {
                 time->Append(sort2.Time());
             case 5:
                 sort2.Start();
-                Sorter<T>::sortMerge(arr1, 0, arr1.GetLength(), cmp<T>);
+                Sorter<T>::sortMerge(arr1, cmp<T>);
                 time->Append(sort2.Time());
             case 6:
                 sort2.Start();
@@ -270,3 +270,5 @@ ArraySequence<double> *getSortTime(ArraySequence<int> &arr1) {
     }
     return time;
 }
+
+*/

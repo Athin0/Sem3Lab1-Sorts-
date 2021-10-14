@@ -178,6 +178,15 @@ public:
     friend std::ostream &operator<<(std::ostream &out, ArraySequence<T>* arraySequence) {
         return cout << arraySequence->dynamicArray;
     }
+    bool operator==(ArraySequence<T> *arraySequence) {
+        if (this->GetLength() != arraySequence->GetLength())
+            return 0;
+        for (int i = 0; i < arraySequence->GetLength(); i++) {
+            if(this->Get(i) != arraySequence->Get(i))
+                return 0;
+        }
+        return 1;
+    }
 };
 
 //template<class T>

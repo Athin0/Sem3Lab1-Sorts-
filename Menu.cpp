@@ -3,79 +3,19 @@
 //
 
 #include "Menu.h"
-#include "DynamicArray.cpp"
-#include "baseFunc.h"
-//#include "test.h"
-#include "Compare.h"
-using namespace std;
 
-void mainMenuSequence() {
-    ArraySequence<ArraySequence<int> *> arrDA;
-    ArraySequence<LinkedListSequence<int> *> arrLL;
-    int item;
-    while (true) {
-        cout << "Программа имеет следующие возможности: \n"
-             << "\t1: Ввести и запомнить последовательность\n"
-             << "\t2: Вывести последовательность в консоль\n"
-             << "\t3: Сортировка последовательности\n"
-             << "\t4: Удалить последовательность в памяти\n"
-             << "\t5: Запустить функцию тестирования последовательность\n"
-             << "\t6: Сравнить тайминги\n"
-             << "\t7: Закончить выполнение программы\n"
-             << "Введите число: ";
-        item= GetInt();
-        if (item < 1 || item > 7) {
-            cout << "Ошибка! Нет такого пункта! Повторите попытку\n";
-            continue;
-        }
-
-        if (item == 7)
-            break;
-
-        switch (item) {
-            case 1:
-                readSequence(&arrDA, &arrLL);
-                break;
-            case 2:
-                printSequence(&arrDA, &arrLL);
-                break;
-            case 3:
-                SortSequence(&arrDA, &arrLL);
-                break;
-            case 4:
-                deleteSequence(&arrDA, &arrLL);
-                break;
-            case 5:
-                //testFunc();
-                break;
-            case 6:
-                compare();
-                break;
-            default:
-                break;
-        }
-    }
-
-    for (int i = 0; i < arrDA.GetLength(); i++) {
-        delete arrDA.Get(i);
-    }
-
-    for (int i = 0; i < arrLL.GetLength(); i++) {
-        delete arrLL.Get(i);
-    }
-
-}
 
 //1
-void readSequence(ArraySequence<ArraySequence<int>*> *arrDA,
-                  ArraySequence<LinkedListSequence<int>*> *arrLL) {
+template<class T>
+void readSequence(ArraySequence<ArraySequence<T>*> *arrDA,
+                  LinkedListSequence<ArraySequence<T> *> *arrLL) {
 
     int count = 0;
 
-    cout << "Введите длину последовательности или -1 для выхода\n: ";
+    std::cout << "Введите длину последовательности или -1 для выхода\n: ";
     do {
         if (count < 0) {
-            cout << "Последовательности длины не поддерживаются!\n: ";
+            std::cout << "Последовательности длины не поддерживаются!\n: ";
         }
         count= GetInt();
 
@@ -86,7 +26,7 @@ void readSequence(ArraySequence<ArraySequence<int>*> *arrDA,
     auto item = GetType();
     if (item == 0) return;
 
-    cout << "Сгенерировать вектор автоматически или ввести вручную?:\n"
+    std::cout << "Сгенерировать вектор автоматически или ввести вручную?:\n"
             "\t0: выход\n"
             "\t1: ввести вектор вручную\n"
             "\t2: сгенерировать вектор\n: ";
@@ -120,7 +60,7 @@ void readSequence(ArraySequence<ArraySequence<int>*> *arrDA,
         }
     }
 
-    cout << "Хотите ввести ещё один вектор?\n"
+    std::cout << "Хотите ввести ещё один вектор?\n"
             "\t0 - нет\n"
             "\t1 - да\n: ";
 
@@ -132,7 +72,7 @@ void readSequence(ArraySequence<ArraySequence<int>*> *arrDA,
 
 template<class T>
 void readTypeSequence(Sequence<ArraySequence<T>*> *arr, int count) {
-    cout << "Введите координаты вектора\n:";
+    std::cout << "Введите координаты вектора\n:";
 
     auto vec= (*arr).copy();
     ArraySequence<T> element;
@@ -143,7 +83,7 @@ void readTypeSequence(Sequence<ArraySequence<T>*> *arr, int count) {
     }
 
 
-    cout << "Вы ввели: " << element
+    std::cout << "Вы ввели: " << element
          << "\nЗаписать этот вектор? (1 - да, 0 - повторить попытку ввода, "
          << "другое число приведёт к выходу их функции)\n:";
     int item;
@@ -164,7 +104,7 @@ void readTypeSequence(Sequence<ArraySequence<T>*> *arr, int count) {
 
 template<class T>
 void readTypeSequence(Sequence<LinkedListSequence<T>*> *arr, int count) {
-    cout << "Введите элементы последовательности\n:";
+    std::cout << "Введите элементы последовательности\n:";
 
     auto vec= (*arr).copy();
     LinkedListSequence<T> element;
@@ -175,7 +115,7 @@ void readTypeSequence(Sequence<LinkedListSequence<T>*> *arr, int count) {
     }
 
 
-    cout << "Вы ввели: " << element
+    std::cout << "Вы ввели: " << element
          << "\nЗаписать этe последовательность? (1 - да, 0 - повторить попытку ввода, "
          << "другое число приведёт к выходу их функции)\n:";
     int item;
@@ -202,7 +142,7 @@ void generateRandomSequence(ArraySequence<Sequence<T> *> *arr, int count, T (*fu
     }
 
     LinkedListSequence<T> vec(element);
-    cout << "Сгенерировано \"" << vec << "\". Записать или сгенерировать новую последовательность?\n"
+    std::cout << "Сгенерировано \"" << vec << "\". Записать или сгенерировать новую последовательность?\n"
                                          "\t-1: выход\n"
                                          "\t 0: сгенерировать новую\n"
                                          "\t 1: записать последовательность в память\n: ";
@@ -229,7 +169,7 @@ void generateRandomSequence(ArraySequence<ArraySequence<T> *> *arr, int count, T
         element.Append(func());
     }
     ArraySequence<T> vec(element);
-    cout << "Сгенерировано \"" << vec << "\". Записать или сгенерировать новую последовательность?\n"
+    std::cout << "Сгенерировано \"" << vec << "\". Записать или сгенерировать новую последовательность?\n"
                                         "\t-1: выход\n"
                                         "\t 0: сгенерировать новую\n"
                                         "\t 1: записать последовательность в память\n: ";
@@ -249,29 +189,7 @@ void generateRandomSequence(ArraySequence<ArraySequence<T> *> *arr, int count, T
 
 
 template<class T>
-void generateRandomSequence(ArraySequence<LinkedListSequence<T> *> *arr, int count, T (*func)()) {
-    ArraySequence<T> element;
-    for (int i = 0; i < count; i++) {
-        element.Append(func());
-    }
-    LinkedListSequence<T> vec(element);
-    cout << "Сгенерировано \"" << vec << "\". Записать или сгенерировать новую последовательность?\n"
-                                         "\t-1: выход\n"
-                                         "\t 0: сгенерировать новую\n"
-                                         "\t 1: записать последовательность в память\n: ";
-    int item = GetInt(-1, 1);
-    switch (item) {
-        default:
-            break;
-        case 0:
-            generateRandomSequence(arr, count, func);
-            break;
-        case 1:
-            auto *res = new LinkedListSequence<T>(element);
-            arr->Append(res);
-            break;
-    }
-}
+void generateRandomSequence(ArraySequence<LinkedListSequence<T> *> *arr, int count, T (*func)());
 
 //3
 void printSequence(ArraySequence<ArraySequence<int> *> *arrDA,
@@ -293,12 +211,12 @@ void printSequence(ArraySequence<ArraySequence<int> *> *arrDA,
 template<class T>
 void printTypeSequence(ArraySequence<Sequence<T> *> *arr) {
     if (arr->GetLength() == 0) {
-        cout << "Таких векторов нет!";
+        std::cout << "Таких векторов нет!";
         return;
     }
     int item;
     do {
-        cout << "В памяти находится \"" << arr->GetLength() << "\" векторов этого типа, введите:\n"
+        std::cout << "В памяти находится \"" << arr->GetLength() << "\" векторов этого типа, введите:\n"
                                                                "\t- Индекс элемента для его вывода в консоль\n"
                                                                "\t- Число, больше чем количество векторов для вывода всех векторов "
                                                                "этого типа\n"
@@ -308,12 +226,12 @@ void printTypeSequence(ArraySequence<Sequence<T> *> *arr) {
         if (item < 0) break;
 
         if (item < arr->GetLength()) {
-            cout << item << ": " << arr->Get(item) << endl;
+            std::cout << item << ": " << arr->Get(item) << endl;
         }
 
         if (item >= arr->GetLength())
-            cout << arr;
-        cout << endl;
+            std::cout << arr;
+        std::cout << endl;
     } while (item >= 0);
 }
 
@@ -340,7 +258,7 @@ void deleteSequence(ArraySequence<ArraySequence<int> *> *arrDA,
 template<class T>
 void deleteTypeSequence(ArraySequence<Sequence<T> *> *arr) {
     if (arr->GetLength() == 0) {
-        cout << "Таких векторов нет!\n";
+        std::cout << "Таких векторов нет!\n";
         return;
     }
     int item;
@@ -348,10 +266,10 @@ void deleteTypeSequence(ArraySequence<Sequence<T> *> *arr) {
     while (true) {
         int len = arr->GetLength();
         if (len == 0) {
-            cout << "Больше не осталось векторов этого типа! Автоматический выход из функции\n";
+            std::cout << "Больше не осталось векторов этого типа! Автоматический выход из функции\n";
             break;
         }
-        cout << "В памяти находится \"" << len << "\" векторов, введите:\n"
+        std::cout << "В памяти находится \"" << len << "\" векторов, введите:\n"
                                                   "\t- Число меньше нуля для выхода из функции\n"
                                                   "\t- Индекс элемента, для его выбора\n"
                                                   "\t- Число, больше длины массива, для вывода векторов в консоль\n: ";
@@ -361,11 +279,11 @@ void deleteTypeSequence(ArraySequence<Sequence<T> *> *arr) {
         if (item < 0) break;
 
         if (item >= arr->GetLength()) {
-            cout << arr;;
+            std::cout << arr;;
             continue;
         }
 
-        cout << "Выберите операцию:"
+        std::cout << "Выберите операцию:"
                 "\t-1: вернуться к выбору индекса\n"
                 "\t 0: для удаления элемента\n: ";
         int item2 = GetInt(-1, 0);
@@ -373,7 +291,7 @@ void deleteTypeSequence(ArraySequence<Sequence<T> *> *arr) {
         if (item2 == -1) continue;
 
         if (item2 == 0) {
-            cout << "Вы действительно хотите удалить \"" << arr->Get(item) << "\" ?\n"
+            std::cout << "Вы действительно хотите удалить \"" << arr->Get(item) << "\" ?\n"
                                                                                "\t0 - нет\n"
                                                                                "\t1 - да\n: ";
             item2 = GetInt(0, 1);
@@ -384,4 +302,88 @@ void deleteTypeSequence(ArraySequence<Sequence<T> *> *arr) {
         }
     }
 }
+
+template<class T>
+void generateRandomSequence(ArraySequence<LinkedListSequence<T> *> *arr, int count, T (*func)()) {
+    ArraySequence<T> element;
+    for (int i = 0; i < count; i++) {
+        element.Append(func());
+    }
+    LinkedListSequence<T> vec(element);
+    std::cout << "Сгенерировано \"" << vec << "\". Записать или сгенерировать новую последовательность?\n"
+                                              "\t-1: выход\n"
+                                              "\t 0: сгенерировать новую\n"
+                                              "\t 1: записать последовательность в память\n: ";
+    int item = GetInt(-1, 1);
+    switch (item) {
+        default:
+            break;
+        case 0:
+            generateRandomSequence(arr, count, func);
+            break;
+        case 1:
+            auto *res = new LinkedListSequence<T>(element);
+            arr->Append(res);
+            break;
+    }
+}
+
+void mainMenuSequence() {
+    ArraySequence<ArraySequence<int> *> arrDA;
+    ArraySequence<LinkedListSequence<int> *> arrLL;
+    int item;
+    while (true) {
+        std::cout << "Программа имеет следующие возможности: \n"
+                  << "\t1: Ввести и запомнить последовательность\n"
+                  << "\t2: Вывести последовательность в консоль\n"
+                  << "\t3: Сортировка последовательности\n"
+                  << "\t4: Удалить последовательность в памяти\n"
+                  << "\t5: Запустить функцию тестирования последовательность\n"
+                  << "\t6: Сравнить тайминги\n"
+                  << "\t7: Закончить выполнение программы\n"
+                  << "Введите число: ";
+        item= GetInt();
+        if (item < 1 || item > 7) {
+            std::cout << "Ошибка! Нет такого пункта! Повторите попытку\n";
+            continue;
+        }
+
+        if (item == 7)
+            break;
+
+        switch (item) {
+            case 1:
+                readSequence(&arrDA, &arrLL);
+                break;
+            case 2:
+                printSequence(&arrDA, &arrLL);
+                break;
+            case 3:
+                SortSequence(&arrDA, &arrLL);
+                break;
+            case 4:
+                deleteSequence(&arrDA, &arrLL);
+                break;
+            case 5:
+                testFunc();
+                break;
+            case 6:
+                compare();
+                break;
+            default:
+                break;
+        }
+    }
+
+    for (int i = 0; i < arrDA.GetLength(); i++) {
+        delete arrDA.Get(i);
+    }
+
+    for (int i = 0; i < arrLL.GetLength(); i++) {
+        delete arrLL.Get(i);
+    }
+
+}
+
+
 /**/

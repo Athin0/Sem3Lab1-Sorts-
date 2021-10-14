@@ -22,6 +22,8 @@ public:
 
     //friend std::ostream &operator << (std::ostream &out, Sequence<T>& arr);
 
+    //friend bool operator==(Sequence<T>* arraySequence, Sequence<T>* arraySequence1);
+
     virtual void Append (T item) = 0;
     virtual void Prepend(T item) = 0;
     virtual void Insert(T item, int index) = 0;
@@ -57,5 +59,27 @@ std::ostream &operator <<(std::ostream &cout,Sequence<T>& array){
     return std::cout << '}';
 } ;
 
+template<class T>
+bool operator==(Sequence<T>& arraySequence, Sequence<T>& arraySequence1) {
+    if (arraySequence1.GetLength() != arraySequence.GetLength())
+        return false;
+    for (int i = 0; i < arraySequence.GetLength(); i++) {
+        if(arraySequence1.Get(i) != arraySequence.Get(i))
+            return false;
+    }
+    return true;
+}
+
+
+//template<class T>
+//Sequence<T>:: bool operator==(Sequence<T>* arraySequence, Sequence<T>* arraySequence1) {
+//    if (arraySequence1->GetLength() != arraySequence->GetLength())
+//        return false;
+//    for (int i = 0; i < arraySequence->GetLength(); i++) {
+//        if(arraySequence1->Get(i) != arraySequence->Get(i))
+//            return 0;
+//    }
+//    return 1;
+//}
 
 #endif //LAB2_SEQUENCE_H

@@ -2,8 +2,8 @@
 // Created by arina on 02.10.2021.
 //
 
-#ifndef SORTS_TIME_H
-#define SORTS_TIME_H
+#ifndef SORTS_TIMER_H
+#define SORTS_TIMER_H
 #include <chrono>
 
 class Timer {
@@ -24,4 +24,4 @@ public:
     }
 };
 
-#endif //SORTS_TIME_H
+#endif //SORTS_TIMER_H

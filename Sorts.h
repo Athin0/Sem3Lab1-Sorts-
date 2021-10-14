@@ -14,13 +14,13 @@ using namespace std;
 
 
 template<class T>
+static bool cmp(T a, T b) {
+    return a > b;
+}
+
+template<class T>
 class Sorter {
 public:
-
-    static bool sr(T a, T b) {
-        return a > b;
-    }
-
 
     static void swap(Sequence<T> &seq, int i1, int i2) {
         T item = seq.Get(i1);
@@ -119,16 +119,18 @@ public:
 //Сортировка слиянием
 
 
-    static Sequence<T> *sortMerge(Sequence<T> &vec1, int first, int last, bool  (*func)(T, T)) {
-        auto vec = vec1.copy();
+    static void sortMergeVoid(Sequence<T> &vec, int first, int last, bool  (*func)(T, T)) {
         if (first < last - 1) {
-            sortMerge(*vec, first, (first + last) / 2,func);
-            sortMerge(*vec, (first + last) / 2, last, func);
-            Merge(*vec, first, last, func);
+            sortMergeVoid(vec, first, (first + last) / 2,func);
+            sortMergeVoid(vec, (first + last) / 2, last, func);
+            Merge(vec, first, last, func);
         }
+    }
+    static Sequence<T> *sortMerge(Sequence<T> &vec1, bool  (*func)(T, T)) {
+        auto vec = vec1.copy();
+        sortMergeVoid(*vec,0,vec->GetLength(),func);
         return vec;
     }
-
 
     static void Merge(Sequence<T> &array, int begin, int last, bool  (*func)(T, T)) {
         ArraySequence<T> temp_array;
@@ -295,7 +297,7 @@ public:
 
     static Sequence<T> *sortSquareSelection(Sequence<T> &vec1, bool  (*func)(T, T)) {
         auto vec = vec1.copy();
-        T max = FindMaxMin(vec);
+        T max = FindMaxMin(*vec);
         int min = 0;
         size_t size = vec->GetLength();
         ArraySequence<T> resultA;
@@ -309,10 +311,10 @@ public:
              i < size; i += nGroups) {   //создали массив с минимальными элментами из каждой группы
             min = i;
             for (int j = i + 1; j < i + nGroups && j < size; j++)
-                if (func(vec[min], vec[j]))
+                if (func(vec->Get(min), vec->Get(j)))
                     min = j;
-            MinInGroups.Append(vec[min]);
-            vec[min] = max;
+            MinInGroups.Append(vec->Get(min));
+            vec->Set(min, max);
         }
         while (true) {
             min = 0;
@@ -328,14 +330,14 @@ public:
             min = i;
             for (int j = i + 1;
                  j < i + nGroups && j < size; j++)  //ищем в группе в которой взяли минимальный элемент новый минимум
-                if (func(vec[min], vec[j]))
+                if (func(vec->Get(min), vec->Get(j)))
                     min = j;
-            MinInGroups[(i / nGroups)] = vec[min];
-            vec[min] = max;
+            MinInGroups[(i / nGroups)] = vec->Get(min);
+            vec->Set(min, max);
         }
 
         for (int i = 0; i < size; i++)
-            vec[i] = resultA[i];
+            vec->Set(i,resultA[i]);
 
         return vec;
     }

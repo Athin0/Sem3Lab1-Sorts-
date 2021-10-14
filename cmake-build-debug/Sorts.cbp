@@ -110,6 +110,9 @@
 		<Unit filename="/cygdrive/c/Users/arina/CLionProjects/Sorts/Sorts.h">
 			<Option target="Sorts"/>
 		</Unit>
+		<Unit filename="/cygdrive/c/Users/arina/CLionProjects/Sorts/Tests.h">
+			<Option target="Sorts"/>
+		</Unit>
 		<Unit filename="/cygdrive/c/Users/arina/CLionProjects/Sorts/baseFunc.cpp">
 			<Option target="Sorts"/>
 		</Unit>

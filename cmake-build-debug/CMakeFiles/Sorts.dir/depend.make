@@ -11,7 +11,7 @@ CMakeFiles/Sorts.dir/Compare.cpp.o: \
  ../LinkedListSequence.h \
  ../Sequence.h \
  ../Sorts.h \
- ../Time.h \
+ ../Timer.h \
  ../baseFunc.h
 CMakeFiles/Sorts.dir/DynamicArray.cpp.o: \
  ../DynamicArray.cpp \
@@ -30,6 +30,8 @@ CMakeFiles/Sorts.dir/Menu.cpp.o: \
  ../Menu.h \
  ../Sequence.h \
  ../Sorts.h \
+ ../Tests.h \
+ ../Timer.h \
  ../baseFunc.h
 CMakeFiles/Sorts.dir/Sorts.cpp.o: \
  ../DynamicArray.cpp \
@@ -42,6 +44,7 @@ CMakeFiles/Sorts.dir/baseFunc.cpp.o: \
  ../baseFunc.cpp \
  ../baseFunc.h
 CMakeFiles/Sorts.dir/main.cpp.o: \
+ ../Compare.h \
  ../DynamicArray.cpp \
  ../DynamicArray.h \
  ../DynamicArraySequence.h \
@@ -51,4 +54,7 @@ CMakeFiles/Sorts.dir/main.cpp.o: \
  ../Sequence.h \
  ../Sorts.cpp \
  ../Sorts.h \
+ ../Tests.h \
+ ../Timer.h \
+ ../baseFunc.h \
  ../main.cpp

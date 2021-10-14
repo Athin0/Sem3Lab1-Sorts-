@@ -5,6 +5,7 @@
 #include "DynamicArraySequence.h"
 #include "LinkedListSequence.h"
 #include "Menu.h"
+
 using namespace std;
 
 template< typename T>
@@ -12,7 +13,7 @@ void Correct( Sequence<T> *a);
 
 int main() {
     mainMenuSequence();
-  return 0;
+    return 0;
 }
 //
  //     int n=10;
@@ -22,7 +23,7 @@ int main() {
  //     }
  //     cout << a <<endl;
  //     //Sequence<int> *k;
- //     auto k = Sorter<int>::sortCounting(a,Sorter<int>::sr);
+ //     auto k = Sorter<int>::sortCounting(a,Sorter<int>::cmp);
 //
  //     cout<< k << endl;
  //     cout << a;
@@ -33,7 +34,7 @@ int main() {
 //
  // template< typename T>
  // void Correct( Sequence<T>* a){
- //     auto b= Sorter<int>::sortCocktail(*a,Sorter<int>::sr);
+ //     auto b= Sorter<int>::sortCocktail(*a,Sorter<int>::cmp);
  //     cout<< "\nПравильность:";
  //     int wrong=0;
  //     int n= a->GetLength();

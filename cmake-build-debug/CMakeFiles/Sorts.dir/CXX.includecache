@@ -9,14 +9,6 @@
 /cygdrive/c/Users/arina/CLionProjects/Sorts/Compare.cpp
 Compare.h
 /cygdrive/c/Users/arina/CLionProjects/Sorts/Compare.h
-Sorts.h
-/cygdrive/c/Users/arina/CLionProjects/Sorts/Sorts.h
-LinkedListSequence.h
-/cygdrive/c/Users/arina/CLionProjects/Sorts/LinkedListSequence.h
-DynamicArraySequence.h
-/cygdrive/c/Users/arina/CLionProjects/Sorts/DynamicArraySequence.h
-Time.h
-/cygdrive/c/Users/arina/CLionProjects/Sorts/Time.h
 
 /cygdrive/c/Users/arina/CLionProjects/Sorts/Compare.h
 DynamicArraySequence.h
@@ -27,6 +19,10 @@ Sorts.h
 /cygdrive/c/Users/arina/CLionProjects/Sorts/Sorts.h
 LinkedListSequence.h
 /cygdrive/c/Users/arina/CLionProjects/Sorts/LinkedListSequence.h
+DynamicArraySequence.h
+/cygdrive/c/Users/arina/CLionProjects/Sorts/DynamicArraySequence.h
+Timer.h
+/cygdrive/c/Users/arina/CLionProjects/Sorts/Timer.h
 
 /cygdrive/c/Users/arina/CLionProjects/Sorts/DynamicArray.cpp
 DynamicArray.h
@@ -44,6 +40,10 @@ DynamicArray.h
 DynamicArray.cpp
 /cygdrive/c/Users/arina/CLionProjects/Sorts/DynamicArray.cpp
 
+/cygdrive/c/Users/arina/CLionProjects/Sorts/LinkedList.cpp
+LinkedList.h
+/cygdrive/c/Users/arina/CLionProjects/Sorts/LinkedList.h
+
 /cygdrive/c/Users/arina/CLionProjects/Sorts/LinkedList.h
 iostream
 /cygdrive/c/Users/arina/CLionProjects/Sorts/iostream
@@ -58,9 +58,31 @@ Sequence.h
 LinkedList.h
 /cygdrive/c/Users/arina/CLionProjects/Sorts/LinkedList.h
 
+/cygdrive/c/Users/arina/CLionProjects/Sorts/Menu.cpp
+Menu.h
+/cygdrive/c/Users/arina/CLionProjects/Sorts/Menu.h
+
+/cygdrive/c/Users/arina/CLionProjects/Sorts/Menu.h
+iostream
+-
+DynamicArraySequence.h
+/cygdrive/c/Users/arina/CLionProjects/Sorts/DynamicArraySequence.h
+LinkedListSequence.h
+/cygdrive/c/Users/arina/CLionProjects/Sorts/LinkedListSequence.h
+Compare.h
+/cygdrive/c/Users/arina/CLionProjects/Sorts/Compare.h
+baseFunc.h
+/cygdrive/c/Users/arina/CLionProjects/Sorts/baseFunc.h
+Tests.h
+/cygdrive/c/Users/arina/CLionProjects/Sorts/Tests.h
+
 /cygdrive/c/Users/arina/CLionProjects/Sorts/Sequence.h
 iostream
 /cygdrive/c/Users/arina/CLionProjects/Sorts/iostream
+
+/cygdrive/c/Users/arina/CLionProjects/Sorts/Sorts.cpp
+Sorts.h
+/cygdrive/c/Users/arina/CLionProjects/Sorts/Sorts.h
 
 /cygdrive/c/Users/arina/CLionProjects/Sorts/Sorts.h
 iostream
@@ -74,13 +96,41 @@ DynamicArraySequence.h
 Sequence.h
 /cygdrive/c/Users/arina/CLionProjects/Sorts/Sequence.h
 
-/cygdrive/c/Users/arina/CLionProjects/Sorts/Time.h
+/cygdrive/c/Users/arina/CLionProjects/Sorts/Tests.h
+Sorts.h
+/cygdrive/c/Users/arina/CLionProjects/Sorts/Sorts.h
+
+/cygdrive/c/Users/arina/CLionProjects/Sorts/Timer.h
 chrono
 -
+
+/cygdrive/c/Users/arina/CLionProjects/Sorts/baseFunc.cpp
+baseFunc.h
+/cygdrive/c/Users/arina/CLionProjects/Sorts/baseFunc.h
+iostream
+/cygdrive/c/Users/arina/CLionProjects/Sorts/iostream
+random
+/cygdrive/c/Users/arina/CLionProjects/Sorts/random
 
 /cygdrive/c/Users/arina/CLionProjects/Sorts/baseFunc.h
 random
 /cygdrive/c/Users/arina/CLionProjects/Sorts/random
 complex
 /cygdrive/c/Users/arina/CLionProjects/Sorts/complex
+
+/cygdrive/c/Users/arina/CLionProjects/Sorts/main.cpp
+iostream
+-
+Sorts.h
+/cygdrive/c/Users/arina/CLionProjects/Sorts/Sorts.h
+Sorts.cpp
+/cygdrive/c/Users/arina/CLionProjects/Sorts/Sorts.cpp
+random
+/cygdrive/c/Users/arina/CLionProjects/Sorts/random
+DynamicArraySequence.h
+/cygdrive/c/Users/arina/CLionProjects/Sorts/DynamicArraySequence.h
+LinkedListSequence.h
+/cygdrive/c/Users/arina/CLionProjects/Sorts/LinkedListSequence.h
+Menu.h
+/cygdrive/c/Users/arina/CLionProjects/Sorts/Menu.h
 

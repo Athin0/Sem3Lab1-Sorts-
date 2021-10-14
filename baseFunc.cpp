@@ -71,6 +71,7 @@ int GetType() {
     return GetInt(0, 2);
 }
 //5
+/*
 void testFunc() {
     cout << "Введите:\n"
             "\t- положительное число для ввода итераций тестов\n"
@@ -87,3 +88,4 @@ void testFunc() {
     if (count == 1)
         testFunc();
 }
+*/
