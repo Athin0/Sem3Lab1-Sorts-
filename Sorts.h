@@ -168,16 +168,19 @@ public:
         return temp;
 
     }
+    static void sortQuickVoid(Sequence<T> &vec, int low, int high, bool  (*func)(T, T)) {
+        if (high > low) {
+            int p = partition(vec, low, high, func);
+            sortQuickVoid(vec, low, p - 1, func);
+            sortQuickVoid(vec, p + 1, high, func);
+        }
+
+    }
 
 
     static Sequence<T> *sortQuick(Sequence<T> &vec1, int low, int high, bool  (*func)(T, T)) {
         auto vec = vec1.copy();
-        if (high > low) {
-            int p = partition(*vec, low, high, func);
-            sortQuick(*vec, low, p - 1, func);
-            sortQuick(*vec, p + 1, high, func);
-        }
-
+        sortQuickVoid(*vec,0,vec->GetLength()-1,func);
         return vec;
     }
 
@@ -295,11 +298,10 @@ public:
 //Квадратичная сортировка
 
 
-    static Sequence<T> *sortSquareSelection(Sequence<T> &vec1, bool  (*func)(T, T)) {
-        auto vec = vec1.copy();
-        T max = FindMaxMin(*vec);
+    static void sortSquareSelectionVoid(Sequence<T> &vec, bool  (*func)(T, T)) {
+        T max = FindMaxMin(vec);
         int min = 0;
-        size_t size = vec->GetLength();
+        size_t size = vec.GetLength();
         ArraySequence<T> resultA;
         int nGroups = (int) sqrt((double) size);
         if (pow((double) nGroups, 2) < size)
@@ -311,10 +313,10 @@ public:
              i < size; i += nGroups) {   //создали массив с минимальными элментами из каждой группы
             min = i;
             for (int j = i + 1; j < i + nGroups && j < size; j++)
-                if (func(vec->Get(min), vec->Get(j)))
+                if (func(vec[min], vec[j]))
                     min = j;
-            MinInGroups.Append(vec->Get(min));
-            vec->Set(min, max);
+            MinInGroups.Append(vec[min]);
+            vec[min] = max;
         }
         while (true) {
             min = 0;
@@ -330,19 +332,22 @@ public:
             min = i;
             for (int j = i + 1;
                  j < i + nGroups && j < size; j++)  //ищем в группе в которой взяли минимальный элемент новый минимум
-                if (func(vec->Get(min), vec->Get(j)))
+                if (func(vec[min], vec[j]))
                     min = j;
-            MinInGroups[(i / nGroups)] = vec->Get(min);
-            vec->Set(min, max);
+            MinInGroups[(i / nGroups)] = vec[min];
+            vec[min] = max;
         }
 
         for (int i = 0; i < size; i++)
-            vec->Set(i,resultA[i]);
+            vec[i] = resultA[i];
 
-        return vec;
     }
 
-
+    static Sequence<T> *sortSquareSelection(Sequence<T> &vec1, bool  (*func)(T, T)) {
+        auto vec = vec1.copy();
+        sortSquareSelectionVoid(*vec, func);
+        return vec;
+    }
 //Сортировка двоичными вставками
 
     static Sequence<T> *sortBinaryInsertion(Sequence<T> &vec1, bool  (*func)(T, T)) {

@@ -8,6 +8,7 @@
 #include "LinkedListSequence.h"
 #include "DynamicArraySequence.h"
 #include "Timer.h"
+
 #ifndef SORTS_COMPARE_H
 #define SORTS_COMPARE_H
 
@@ -21,11 +22,11 @@ static void SortType(ArraySequence<Sequence<T> *> *ArrInt) {
     std::cout << "Выберите индекс от 0 до " << ArrInt->GetLength() - 1 << " (включительно):\n";
 
     int index;
-    std::cin >> index;
+    index = GetInt();
     while (index < 0 || index > len) {
         if (index < 0 || index > len)
             std::cout << "Индекс некоректен\n";
-        std::cin >> index;
+        index= GetInt();
         if (index == -1)
             return;
     }
@@ -77,7 +78,7 @@ static void SortType(ArraySequence<Sequence<T> *> *ArrInt) {
             tempSeq = Sorter<T>::sortSelection(*ArrTemp, cmp<T>);
             break;
         case 5:
-            tempSeq = Sorter<T>::sortMerge(*ArrTemp,  cmp<T>);
+            tempSeq = Sorter<T>::sortMerge(*ArrTemp, cmp<T>);
             break;
         case 6:
             tempSeq = Sorter<T>::sortQuick(*ArrTemp, 0, ArrTemp->GetLength() - 1, cmp<T>);
@@ -174,71 +175,72 @@ static ArraySequence<double> *getSortTime(ArraySequence<int> &arr1) {
     int arr[] = {9, 5, 3, 8, 4, 1};
     ArraySequence<int> array(arr, 6);
     ArraySequence<int> ArrTemp(arr1);
+    Sequence<T> *res;
     for (int i = 1; i <= 15; i++) {
         switch (i) {
             case 1:
                 sort2.Start();
-                Sorter<T>::sortBubble(arr1, cmp<T>);
+                res = Sorter<T>::sortBubble(arr1, cmp<T>);
                 time->Append(sort2.Time());
             case 2:
                 sort2.Start();
-                Sorter<T>::sortCocktail(arr1, cmp<T>);
+                res = Sorter<T>::sortCocktail(arr1, cmp<T>);
                 time->Append(sort2.Time());
             case 3:
                 sort2.Start();
-                Sorter<T>::sortInsertion(arr1, cmp<T>);
+                res = Sorter<T>::sortInsertion(arr1, cmp<T>);
                 time->Append(sort2.Time());
             case 4:
                 sort2.Start();
-                Sorter<T>::sortSelection(arr1, cmp<T>);
+                res = Sorter<T>::sortSelection(arr1, cmp<T>);
                 time->Append(sort2.Time());
             case 5:
                 sort2.Start();
-                Sorter<T>::sortMerge(arr1, cmp<T>);
+                res = Sorter<T>::sortMerge(arr1, cmp<T>);
                 time->Append(sort2.Time());
             case 6:
                 sort2.Start();
-                Sorter<T>::sortQuick(arr1, 0, arr1.GetLength() - 1, cmp<T>);
+                res = Sorter<T>::sortQuick(arr1, 0, arr1.GetLength() - 1, cmp<T>);
                 time->Append(sort2.Time());
             case 7:
                 sort2.Start();
-                Sorter<T>::sortQuickHoare(arr1, 0, arr1.GetLength() - 1, cmp<T>);
+                res = Sorter<T>::sortQuickHoare(arr1, 0, arr1.GetLength() - 1, cmp<T>);
                 time->Append(sort2.Time());
             case 8:
                 sort2.Start();
-                // Sorter<T>::sortCounting(arr1, cmp<T>);  //а че не робит то??
+                // res=Sorter<T>::sortCounting(arr1, cmp<T>);  //а че не робит то??
                 time->Append(sort2.Time());
             case 9:
                 sort2.Start();
-                Sorter<T>::sortShell(arr1, cmp<T>);
+                res = Sorter<T>::sortShell(arr1, cmp<T>);
                 time->Append(sort2.Time());
             case 10:
                 sort2.Start();
-                Sorter<T>::sortShell2(arr1, array, cmp<T>);
+                res = Sorter<T>::sortShell2(arr1, array, cmp<T>);
                 time->Append(sort2.Time());
             case 11:
                 sort2.Start();
-                Sorter<T>::sortSelection(arr1, cmp<T>);
+                res = Sorter<T>::sortSelection(arr1, cmp<T>);
                 time->Append(sort2.Time());
             case 12:
                 sort2.Start();
-                Sorter<T>::sortBinaryInsertion(arr1, cmp<T>);
+                res = Sorter<T>::sortBinaryInsertion(arr1, cmp<T>);
                 time->Append(sort2.Time());
             case 13:
                 sort2.Start();
-                Sorter<T>::sortBinaryTree(arr1, cmp<T>);
+                res = Sorter<T>::sortBinaryTree(arr1, cmp<T>);
                 time->Append(sort2.Time());
             case 14:
                 sort2.Start();
-                Sorter<T>::sortHeap(arr1, cmp<T>);
+                res = Sorter<T>::sortHeap(arr1, cmp<T>);
                 time->Append(sort2.Time());
             case 15:
                 sort2.Start();
-                Sorter<T>::sortBitonic(arr1, cmp<T>);
+                res = Sorter<T>::sortBitonic(arr1, cmp<T>);
                 time->Append(sort2.Time());
 
         }
-
+        free(res);
     }
     return time;
 }
