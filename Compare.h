@@ -208,7 +208,7 @@ static ArraySequence<double> *getSortTime(ArraySequence<int> &arr1) {
                 time->Append(sort2.Time());
             case 8:
                 sort2.Start();
-                // res=Sorter<T>::sortCounting(arr1, cmp<T>);  //а че не робит то??
+                res=Sorter<T>::sortCocktail(arr1, cmp<T>);  //а че не робит то??
                 time->Append(sort2.Time());
             case 9:
                 sort2.Start();
@@ -238,7 +238,8 @@ static ArraySequence<double> *getSortTime(ArraySequence<int> &arr1) {
                 sort2.Start();
                 res = Sorter<T>::sortBitonic(arr1, cmp<T>);
                 time->Append(sort2.Time());
-
+            default:
+                break;
         }
         free(res);
     }
@@ -265,7 +266,7 @@ static void compare() {
             " BitonicSort "};
 
 
-    std::cout << "Выберите количество элементовот  10 до 1000 \n";
+    std::cout << "Выберите количество элементов от 10 до 1000 \n";
     int length = GetInt(10, 1000);
 
     cout << "-------------------------------------------------------------------------------- \n";
@@ -281,7 +282,7 @@ static void compare() {
 
     auto time1 = getSortTime<int>(arr);
 
-    for (int i = 0; i < 16; i++) {
+    for (int i = 0; i < 15; i++) {
         cout.width(25);
         std::cout << NameSorts[i];
         cout << ":" << time1->Get(i) << " ms \n";

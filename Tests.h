@@ -106,14 +106,14 @@ static void testFunc() {
                     std::cout << "Не работает ...\n";
                 delete (result);
                 break;
-           //case 11:
-           //    result =Sorter<int>::sortSquareSelection(Arr,cmp);
-           //    if (*pattern == *result)
-           //        std::cout << "Ну оно типо работает!\n";
-           //    else
-           //        std::cout << "Не работает ...\n";
-           //    delete (result);
-           //    break;
+           case 11:
+               result =Sorter<int>::sortSelection(Arr,cmp);
+               if (*pattern == *result)
+                   std::cout << "Ну оно типо работает!\n";
+               else
+                   std::cout << "Не работает ...\n";
+               delete (result);
+               break;
             case 12:
                 result = Sorter<int>::sortBinaryInsertion(Arr, cmp);
                 if (*pattern == *result)

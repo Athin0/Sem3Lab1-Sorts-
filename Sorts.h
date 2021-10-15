@@ -126,11 +126,6 @@ public:
             Merge(vec, first, last, func);
         }
     }
-    static Sequence<T> *sortMerge(Sequence<T> &vec1, bool  (*func)(T, T)) {
-        auto vec = vec1.copy();
-        sortMergeVoid(*vec,0,vec->GetLength(),func);
-        return vec;
-    }
 
     static void Merge(Sequence<T> &array, int begin, int last, bool  (*func)(T, T)) {
         ArraySequence<T> temp_array;
@@ -148,6 +143,12 @@ public:
             }
         }
         for (int j = begin; j < last; j++) array.Set(j, temp_array.Get(j - begin));
+    }
+
+    static Sequence<T> *sortMerge(Sequence<T> &vec1, bool  (*func)(T, T)) {
+        auto vec = vec1.copy();
+        sortMergeVoid(*vec,0,vec->GetLength(),func);
+        return vec;
     }
 
 
@@ -301,7 +302,7 @@ public:
     static void sortSquareSelectionVoid(Sequence<T> &vec, bool  (*func)(T, T)) {
         T max = FindMaxMin(vec);
         int min = 0;
-        size_t size = vec.GetLength();
+        size_t size = vec.GetLength()-1;
         ArraySequence<T> resultA;
         int nGroups = (int) sqrt((double) size);
         if (pow((double) nGroups, 2) < size)
@@ -309,14 +310,13 @@ public:
 
         ArraySequence<T> MinInGroups;
 
-        for (int i = nGroups * min;
-             i < size; i += nGroups) {   //создали массив с минимальными элментами из каждой группы
+        for (int i = nGroups * min; i < size; i += nGroups) {   //создали массив с минимальными элментами из каждой группы
             min = i;
             for (int j = i + 1; j < i + nGroups && j < size; j++)
                 if (func(vec[min], vec[j]))
                     min = j;
-            MinInGroups.Append(vec[min]);
-            vec[min] = max;
+            MinInGroups.Append(vec[min]);   //вот где то тут ломается
+            vec[min] = max;                 //
         }
         while (true) {
             min = 0;

@@ -368,8 +368,6 @@ static void mainMenuSequence() {
             case 6:
                 compare();
                 break;
-            default:
-                break;
         }
     }
 
