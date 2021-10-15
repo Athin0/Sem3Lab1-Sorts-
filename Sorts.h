@@ -142,7 +142,8 @@ public:
                 second++;
             }
         }
-        for (int j = begin; j < last; j++) array.Set(j, temp_array.Get(j - begin));
+        for (int j = begin; j < last; j++)
+            array.Set(j, temp_array.Get(j - begin));
     }
 
     static Sequence<T> *sortMerge(Sequence<T> &vec1, bool  (*func)(T, T)) {
